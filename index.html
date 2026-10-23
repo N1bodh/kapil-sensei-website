@@ -138,6 +138,24 @@
         <a href="#courses" class="nav-link" data-topic="courses">Courses</a>
         <a href="#about" class="nav-link" data-topic="about">About Sensei</a>
         <div class="mobile-drawer-cta">
+          <!-- Mobile Auth Trigger -->
+          <div class="mobile-auth-wrapper">
+            <button class="btn btn-auth-trigger btn-block mobile-auth-trigger" id="mobile-auth-btn">
+              <span class="auth-btn-icon">👤</span>
+              <span class="auth-btn-label">Student Portal • Sign In / Join</span>
+            </button>
+            <div class="mobile-user-card" id="mobile-user-card" style="display: none;">
+              <div class="mobile-user-info">
+                <span class="user-avatar-badge" id="mobile-user-avatar">K</span>
+                <div>
+                  <div class="mobile-user-name" id="mobile-user-name">Student</div>
+                  <div class="mobile-user-email" id="mobile-user-email">email@example.com</div>
+                </div>
+              </div>
+              <button class="btn btn-outline-sm btn-logout-action" id="mobile-logout-btn">Sign Out</button>
+            </div>
+          </div>
+
           <a href="https://www.youtube.com/@KapilSensei?sub_confirmation=1" target="_blank" rel="noopener" class="btn btn-youtube btn-block">
             <svg viewBox="0 0 24 24" width="20" height="20" fill="currentColor">
               <path d="M23.498 6.186a3.016 3.016 0 0 0-2.122-2.136C19.505 3.545 12 3.545 12 3.545s-7.505 0-9.377.505A3.017 3.017 0 0 0 .502 6.186C0 8.07 0 12 0 12s0 3.93.502 5.814a3.016 3.016 0 0 0 2.122 2.136c1.871.505 9.376.505 9.376.505s7.505 0 9.377-.505a3.015 3.015 0 0 0 2.122-2.136C24 15.93 24 12 24 12s0-3.93-.502-5.814zM9.545 15.568V8.432L15.818 12l-6.273 3.568z"/>
@@ -163,6 +181,45 @@
             <path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"></path>
           </svg>
         </button>
+
+        <!-- Student Portal / Sign In Button & User Dropdown -->
+        <div class="nav-auth-wrapper" id="nav-auth-wrapper">
+          <button id="auth-open-btn" class="btn btn-auth-trigger" aria-label="Student Sign In or Register">
+            <span class="auth-btn-icon">👤</span>
+            <span class="auth-btn-label">Sign In / Join</span>
+          </button>
+
+          <div id="nav-user-profile" class="nav-user-profile" style="display: none;">
+            <button id="user-menu-btn" class="user-pill-btn" aria-expanded="false" aria-haspopup="true">
+              <span class="user-avatar-badge" id="user-avatar-badge">K</span>
+              <span class="user-name-text" id="user-display-name">Student</span>
+              <svg class="dropdown-arrow" viewBox="0 0 20 20" width="14" height="14" fill="currentColor">
+                <path fill-rule="evenodd" d="M5.293 7.293a1 1 0 011.414 0L10 10.586l3.293-3.293a1 1 0 111.414 1.414l-4 4a1 1 0 01-1.414 0l-4-4a1 1 0 010-1.414z" clip-rule="evenodd" />
+              </svg>
+            </button>
+            <div id="user-dropdown-menu" class="user-dropdown-menu">
+              <div class="user-dropdown-header">
+                <div class="user-info-name" id="user-dropdown-name">Student</div>
+                <div class="user-info-email" id="user-dropdown-email">student@example.com</div>
+                <span class="user-status-pill" id="user-dropdown-goal">🎌 JLPT / SSW Learner</span>
+              </div>
+              <div class="user-dropdown-divider"></div>
+              <a href="#courses" class="user-dropdown-item">
+                <span>📖 Academic Programs</span>
+              </a>
+              <a href="#quiz-hub" class="user-dropdown-item">
+                <span>⏱️ Practice Quizzes</span>
+              </a>
+              <a href="#practice-lab" class="user-dropdown-item">
+                <span>🗂️ Audio Flashcards</span>
+              </a>
+              <div class="user-dropdown-divider"></div>
+              <button id="auth-logout-btn" class="user-dropdown-item user-logout-item">
+                <span>🚪 Sign Out</span>
+              </button>
+            </div>
+          </div>
+        </div>
 
         <!-- YouTube Subscribe CTA -->
         <a href="https://www.youtube.com/@KapilSensei?sub_confirmation=1" target="_blank" rel="noopener" class="btn btn-youtube nav-youtube-btn" aria-label="Subscribe on YouTube">
@@ -829,6 +886,31 @@
           </p>
         </div>
 
+        <!-- Academic Excellence Query Redirection Desk -->
+        <div class="academic-query-dispatch-card">
+          <div class="dispatch-info">
+            <div class="dispatch-badge">
+              <span class="dispatch-icon">📬</span>
+              <span>OFFICIAL ACADEMIC QUERY REDIRECTION DESK</span>
+            </div>
+            <h3 class="dispatch-title">Have Questions About Our Structured Study Programs?</h3>
+            <p class="dispatch-desc">
+              All syllabus queries, batch schedules, enrollment questions, and SSW coaching inquiries are automatically routed to Kapil Sensei's official Gmail account: <a href="mailto:kapilsensei777@gmail.com" class="dispatch-email-link"><strong>kapilsensei777@gmail.com</strong></a>.
+            </p>
+          </div>
+          <div class="dispatch-actions">
+            <a href="https://mail.google.com/mail/?view=cm&fs=1&to=kapilsensei777@gmail.com&su=Academic%20Excellence%20Study%20Programs%20Query&body=Hello%20Kapil%20Sensei,%0A%0AI%20am%20inquiring%20about%20your%20Structured%20Study%20Programs%20(Academic%20Excellence).%0A%0AStudent%20Name:%20%0AWhatsApp%20Number:%20%0ATarget%20Program%20(Bootcamp%20/%20JFT-Basic%20/%20SSW%20/%20N3):%20%0AMy%20Questions:%20%0A%0AThank%20you!" target="_blank" rel="noopener" class="btn btn-gmail btn-glow" title="Compose directly in Gmail">
+              <svg viewBox="0 0 24 24" width="20" height="20" fill="currentColor">
+                <path d="M24 5.457v13.909c0 .904-.732 1.636-1.636 1.636h-3.819V11.73L12 16.64l-6.545-4.91v9.272H1.636A1.636 1.636 0 0 1 0 19.366V5.457c0-2.023 2.309-3.178 3.927-1.964L5.455 4.64 12 9.548l6.545-4.91 1.528-1.145C21.69 2.28 24 3.434 24 5.457z"/>
+              </svg>
+              <span>Redirect to Gmail (kapilsensei777@gmail.com)</span>
+            </a>
+            <button class="btn btn-glass open-consultation-btn" data-course="Academic Excellence General Inquiry" data-default-goal="general">
+              <span>📝 Online Query Form</span>
+            </button>
+          </div>
+        </div>
+
         <div class="courses-grid">
           <!-- Course 1 -->
           <div class="course-card">
@@ -843,7 +925,10 @@
             </ul>
             <div class="course-footer">
               <span class="course-price">Free on YouTube</span>
-              <a href="https://www.youtube.com/@KapilSensei" target="_blank" class="btn btn-outline-sm">Start Watching</a>
+              <div class="course-btn-group">
+                <a href="https://www.youtube.com/@KapilSensei" target="_blank" rel="noopener" class="btn btn-outline-sm">Watch Free</a>
+                <button class="btn btn-secondary-sm open-consultation-btn" data-course="Japanese Starter Bootcamp (Zero to N5)" data-default-goal="jlpt_n5_n4">Ask Sensei</button>
+              </div>
             </div>
           </div>
 
@@ -861,7 +946,10 @@
             </ul>
             <div class="course-footer">
               <span class="course-price">Free + Mentorship</span>
-              <button class="btn btn-primary btn-sm open-consultation-btn">Enroll / Inquire</button>
+              <div class="course-btn-group">
+                <button class="btn btn-primary btn-sm open-consultation-btn" data-course="JFT-Basic & SSW Fast-Track (A2 / N4)" data-default-goal="jft">Enroll / Inquire</button>
+                <a href="https://mail.google.com/mail/?view=cm&fs=1&to=kapilsensei777@gmail.com&su=JFT-Basic%20%26%20SSW%20Fast-Track%20Course%20Query&body=Hello%20Kapil%20Sensei,%0A%0AI%20would%20like%20to%20inquire%20about%20the%20JFT-Basic%20%26%20SSW%20Fast-Track%20Program." target="_blank" rel="noopener" class="btn btn-glass-sm" title="Send direct Gmail inquiry">✉️ Gmail Query</a>
+              </div>
             </div>
           </div>
 
@@ -878,7 +966,10 @@
             </ul>
             <div class="course-footer">
               <span class="course-price">Special Batch</span>
-              <button class="btn btn-outline-sm open-consultation-btn">Get Details</button>
+              <div class="course-btn-group">
+                <button class="btn btn-outline-sm open-consultation-btn" data-course="Business & SSW-2 Career Bridge (Intermediate N3)" data-default-goal="general">Get Details</button>
+                <a href="https://mail.google.com/mail/?view=cm&fs=1&to=kapilsensei777@gmail.com&su=Business%20%26%20SSW-2%20Course%20Query&body=Hello%20Kapil%20Sensei,%0A%0AI%20am%20interested%20in%20the%20Business%20%26%20SSW-2%20Career%20Bridge%20Course." target="_blank" rel="noopener" class="btn btn-glass-sm" title="Send direct Gmail inquiry">✉️ Gmail Query</a>
+              </div>
             </div>
           </div>
         </div>
@@ -1036,23 +1127,173 @@
     </div>
   </div>
 
-  <!-- Consultation & Enrollment Modal -->
+  <!-- Student Auth (Sign In & Sign Up) Modal -->
+  <div class="modal-backdrop" id="auth-modal">
+    <div class="modal-dialog auth-modal-dialog">
+      <div class="modal-header">
+        <div class="auth-header-title">
+          <span class="auth-header-badge">🌸 KAPIL SENSEI ACADEMY</span>
+          <h3 id="auth-modal-title">Student Portal</h3>
+        </div>
+        <button class="modal-close-btn" id="close-auth-modal" aria-label="Close modal">&times;</button>
+      </div>
+
+      <!-- Dual Auth Tabs -->
+      <div class="auth-tab-bar">
+        <button class="auth-tab-btn active" id="auth-tab-signin" data-tab="signin">
+          <span>🔑 Sign In</span>
+          <span class="tab-jp"><ruby>ログイン<rt>ろぐいん</rt></ruby></span>
+        </button>
+        <button class="auth-tab-btn" id="auth-tab-signup" data-tab="signup">
+          <span>✨ Create Account</span>
+          <span class="tab-jp"><ruby>新規登録<rt>しんきとうろく</rt></ruby></span>
+        </button>
+      </div>
+
+      <div class="modal-body auth-modal-body">
+        <!-- Sign In Form -->
+        <form id="signin-form" class="auth-panel-form active">
+          <div class="form-group">
+            <label for="signin-email">Valid Email Address *</label>
+            <div class="input-icon-wrapper">
+              <span class="input-lead-icon">✉️</span>
+              <input type="email" id="signin-email" placeholder="e.g. yourname@gmail.com" required autocomplete="email" />
+            </div>
+            <div class="form-error-text" id="signin-email-error"></div>
+          </div>
+
+          <div class="form-group">
+            <label for="signin-password">Password *</label>
+            <div class="input-icon-wrapper">
+              <span class="input-lead-icon">🔒</span>
+              <input type="password" id="signin-password" placeholder="Enter your password" required autocomplete="current-password" />
+              <button type="button" class="pwd-toggle-btn" data-input-id="signin-password" aria-label="Toggle password visibility">👁️</button>
+            </div>
+            <div class="form-error-text" id="signin-password-error"></div>
+          </div>
+
+          <div class="auth-options-row">
+            <label class="custom-checkbox-label">
+              <input type="checkbox" id="signin-remember" checked />
+              <span>Remember me</span>
+            </label>
+            <a href="https://mail.google.com/mail/?view=cm&fs=1&to=kapilsensei777@gmail.com&su=Kapil%20Sensei%20Academy%20-%20Password%20Help" target="_blank" rel="noopener" class="auth-sub-link">Help / Reset?</a>
+          </div>
+
+          <button type="submit" class="btn btn-primary btn-block btn-auth-submit" id="btn-submit-signin">
+            <span>Sign In to Academy 🚀</span>
+          </button>
+
+          <div class="auth-switch-note">
+            <span>Don't have a student account yet?</span>
+            <button type="button" class="auth-link-btn" id="switch-to-signup">Create Account for Free &rarr;</button>
+          </div>
+        </form>
+
+        <!-- Sign Up Form -->
+        <form id="signup-form" class="auth-panel-form">
+          <div class="form-group">
+            <label for="signup-name">Full Name * (Student Name)</label>
+            <div class="input-icon-wrapper">
+              <span class="input-lead-icon">👤</span>
+              <input type="text" id="signup-name" placeholder="e.g. Ramesh Thapa" required autocomplete="name" />
+            </div>
+            <div class="form-error-text" id="signup-name-error"></div>
+          </div>
+
+          <div class="form-group">
+            <label for="signup-email">Valid Email Address *</label>
+            <div class="input-icon-wrapper">
+              <span class="input-lead-icon">✉️</span>
+              <input type="email" id="signup-email" placeholder="e.g. yourname@gmail.com" required autocomplete="email" />
+            </div>
+            <div class="form-error-text" id="signup-email-error"></div>
+          </div>
+
+          <div class="form-group">
+            <label for="signup-password">Create Password * (min. 6 characters)</label>
+            <div class="input-icon-wrapper">
+              <span class="input-lead-icon">🔒</span>
+              <input type="password" id="signup-password" placeholder="At least 6 characters" minlength="6" required autocomplete="new-password" />
+              <button type="button" class="pwd-toggle-btn" data-input-id="signup-password" aria-label="Toggle password visibility">👁️</button>
+            </div>
+            <div class="form-error-text" id="signup-password-error"></div>
+          </div>
+
+          <div class="form-group">
+            <label for="signup-goal">Target Japanese Goal / Sector</label>
+            <div class="input-icon-wrapper">
+              <span class="input-lead-icon">🎯</span>
+              <select id="signup-goal">
+                <option value="JFT-Basic A2 Exam">JFT-Basic A2 Exam Preparation</option>
+                <option value="JLPT N5 Beginner">JLPT N5 Beginner Foundation</option>
+                <option value="JLPT N4 Intermediate">JLPT N4 Intermediate Level</option>
+                <option value="SSW Kaigo (Caregiving)">SSW Kaigo (Caregiving / 介護)</option>
+                <option value="SSW Agriculture">SSW Agriculture (農業)</option>
+                <option value="SSW Food Service">SSW Food Service (外食業)</option>
+                <option value="SSW Hospitality">SSW Hospitality (宿泊業)</option>
+                <option value="General Japanese">General Japanese Fluency</option>
+              </select>
+            </div>
+          </div>
+
+          <div class="auth-options-row">
+            <label class="custom-checkbox-label">
+              <input type="checkbox" id="signup-agree" checked required />
+              <span>I agree to study guidelines &amp; updates</span>
+            </label>
+          </div>
+
+          <button type="submit" class="btn btn-primary btn-block btn-auth-submit" id="btn-submit-signup">
+            <span>Create Student Account 🌸</span>
+          </button>
+
+          <div class="auth-switch-note">
+            <span>Already registered?</span>
+            <button type="button" class="auth-link-btn" id="switch-to-signin">Sign In to Account &rarr;</button>
+          </div>
+        </form>
+
+        <div id="auth-status-box" class="form-success-alert" style="display: none;"></div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Consultation & Academic Query Modal (Redirects to kapilsensei777@gmail.com) -->
   <div class="modal-backdrop" id="consultation-modal">
     <div class="modal-dialog">
       <div class="modal-header">
-        <h3>Book Free Counseling with Kapil Sensei</h3>
+        <div>
+          <span class="consult-badge">ACADEMIC EXCELLENCE DESK</span>
+          <h3 id="consult-modal-title">Official Course &amp; Visa Counseling</h3>
+        </div>
         <button class="modal-close-btn" id="close-consult-modal" aria-label="Close modal">&times;</button>
       </div>
       <div class="modal-body">
-        <p class="modal-sub">Need guidance on your Japanese study plan, JFT exam date, or SSW visa requirements? Send your inquiry directly.</p>
+        <div class="email-redirect-notice-box">
+          <span class="notice-icon">📬</span>
+          <div>
+            <strong>Direct Query Redirection:</strong> All course queries and counseling requests are forwarded directly to Kapil Sensei's official Gmail: <a href="mailto:kapilsensei777@gmail.com" class="bold-email-link">kapilsensei777@gmail.com</a>.
+          </div>
+        </div>
+
         <form id="consultation-form">
+          <input type="hidden" id="consult-course-name" value="Structured Study Programs" />
+
+          <div class="form-group" id="consult-course-group" style="display: none;">
+            <label>Selected Study Program</label>
+            <div class="selected-course-tag" id="consult-selected-course-badge">Structured Study Programs</div>
+          </div>
+
           <div class="form-group">
             <label for="consult-name">Full Name *</label>
             <input type="text" id="consult-name" placeholder="e.g. Ramesh Thapa" required />
+            <div class="form-error-text" id="consult-name-error"></div>
           </div>
           <div class="form-group">
-            <label for="consult-email">Email Address *</label>
+            <label for="consult-email">Valid Email Address *</label>
             <input type="email" id="consult-email" placeholder="e.g. name@example.com" required />
+            <div class="form-error-text" id="consult-email-error"></div>
           </div>
           <div class="form-group">
             <label for="consult-phone">WhatsApp / Phone Number *</label>
@@ -1072,13 +1313,35 @@
             </select>
           </div>
           <div class="form-group">
-            <label for="consult-message">Your Message or Questions</label>
-            <textarea id="consult-message" rows="3" placeholder="Tell Sensei about your current Japanese level and plans..."></textarea>
+            <label for="consult-message">Your Specific Questions / Course Query</label>
+            <textarea id="consult-message" rows="3" placeholder="Tell Sensei about your current Japanese level, exam dates, or questions on study batches..."></textarea>
           </div>
-          <button type="submit" class="btn btn-primary btn-block">Submit Inquiry</button>
+          <button type="submit" class="btn btn-primary btn-block btn-consult-submit">
+            <span>Send Query to Kapil Sensei (kapilsensei777@gmail.com) 📨</span>
+          </button>
         </form>
-        <div id="consult-success-message" class="form-success-alert" style="display: none;">
-          🎉 <strong>Arigatou gozaimasu!</strong> Your inquiry has been submitted. Kapil Sensei will get back to you shortly via WhatsApp or Email. In the meantime, don't forget to check our latest YouTube lessons!
+
+        <!-- Redirection & Confirmation Alert -->
+        <div id="consult-success-message" class="form-success-alert query-dispatched-box" style="display: none;">
+          <div class="dispatch-alert-header">
+            <span class="check-icon">✅</span>
+            <h4>Query Prepared for Kapil Sensei!</h4>
+          </div>
+          <p class="dispatch-alert-body" id="consult-success-details">
+            Your query has been formulated for Kapil Sensei's official inbox at <strong>kapilsensei777@gmail.com</strong>.
+          </p>
+          <div class="dispatch-direct-actions">
+            <a href="#" id="consult-gmail-direct-btn" target="_blank" rel="noopener" class="btn btn-gmail btn-block">
+              <svg viewBox="0 0 24 24" width="18" height="18" fill="currentColor">
+                <path d="M24 5.457v13.909c0 .904-.732 1.636-1.636 1.636h-3.819V11.73L12 16.64l-6.545-4.91v9.272H1.636A1.636 1.636 0 0 1 0 19.366V5.457c0-2.023 2.309-3.178 3.927-1.964L5.455 4.64 12 9.548l6.545-4.91 1.528-1.145C21.69 2.28 24 3.434 24 5.457z"/>
+              </svg>
+              <span>Open Pre-filled in Gmail Now 🚀</span>
+            </a>
+            <div class="dispatch-secondary-row">
+              <a href="#" id="consult-mailto-btn" class="btn btn-glass-sm">Default Email App ✉️</a>
+              <button type="button" id="consult-copy-email-btn" class="btn btn-outline-sm">Copy Email Address 📋</button>
+            </div>
+          </div>
         </div>
       </div>
     </div>

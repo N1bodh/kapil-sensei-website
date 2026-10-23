@@ -15,6 +15,7 @@ document.addEventListener('DOMContentLoaded', () => {
   initSSWModals();
   initFAQ();
   initConsultationForm();
+  initStudentAuth();
 });
 
 /* ===================================================================
@@ -1255,16 +1256,94 @@ function initFAQ() {
 }
 
 /* ===================================================================
-   9. CONSULTATION & ENROLLMENT FORM
+   9. VALIDATION HELPERS
+   =================================================================== */
+function validateEmail(email) {
+  const re = /^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/;
+  return re.test(String(email).trim());
+}
+
+function validateName(name) {
+  const trimmed = String(name).trim();
+  if (trimmed.length < 2) return false;
+  // Allow letters, Japanese characters, hyphens, and spaces
+  const re = /^[a-zA-Z\s.'\-\u3040-\u30ff\u3400-\u4dbf\u4e00-\u9fff]+$/;
+  return re.test(trimmed);
+}
+
+function getStoredUser() {
+  try {
+    const raw = localStorage.getItem('kapil_sensei_user');
+    return raw ? JSON.parse(raw) : null;
+  } catch (e) {
+    return null;
+  }
+}
+
+function setStoredUser(user) {
+  try {
+    localStorage.setItem('kapil_sensei_user', JSON.stringify(user));
+  } catch (e) {}
+}
+
+function clearStoredUser() {
+  try {
+    localStorage.removeItem('kapil_sensei_user');
+  } catch (e) {}
+}
+
+/* ===================================================================
+   10. ACADEMIC EXCELLENCE & CONSULTATION QUERY REDIRECTION
+   Redirects all course queries to official Gmail: kapilsensei777@gmail.com
    =================================================================== */
 function initConsultationForm() {
   const modal = document.getElementById('consultation-modal');
   const closeBtn = document.getElementById('close-consult-modal');
   const form = document.getElementById('consultation-form');
   const successAlert = document.getElementById('consult-success-message');
+  const courseBadgeGroup = document.getElementById('consult-course-group');
+  const courseBadge = document.getElementById('consult-selected-course-badge');
+  const hiddenCourse = document.getElementById('consult-course-name');
+  const goalSelect = document.getElementById('consult-goal');
+  const gmailDirectBtn = document.getElementById('consult-gmail-direct-btn');
+  const mailtoBtn = document.getElementById('consult-mailto-btn');
+  const copyEmailBtn = document.getElementById('consult-copy-email-btn');
+  const successDetails = document.getElementById('consult-success-details');
 
+  const nameInput = document.getElementById('consult-name');
+  const emailInput = document.getElementById('consult-email');
+  const phoneInput = document.getElementById('consult-phone');
+  const messageInput = document.getElementById('consult-message');
+
+  const nameError = document.getElementById('consult-name-error');
+  const emailError = document.getElementById('consult-email-error');
+
+  // Open modal when any consultation / course query button is clicked
   document.querySelectorAll('.open-consultation-btn').forEach(btn => {
     btn.addEventListener('click', () => {
+      const courseName = btn.getAttribute('data-course');
+      const defaultGoal = btn.getAttribute('data-default-goal');
+
+      if (courseName && courseBadge && courseBadgeGroup && hiddenCourse) {
+        courseBadgeGroup.style.display = 'block';
+        courseBadge.textContent = courseName;
+        hiddenCourse.value = courseName;
+      } else if (courseBadgeGroup && hiddenCourse) {
+        courseBadgeGroup.style.display = 'none';
+        hiddenCourse.value = 'Academic Excellence Study Programs';
+      }
+
+      if (defaultGoal && goalSelect) {
+        goalSelect.value = defaultGoal;
+      }
+
+      // Pre-fill user details if logged in
+      const savedUser = getStoredUser();
+      if (savedUser && nameInput && emailInput) {
+        if (!nameInput.value) nameInput.value = savedUser.name || '';
+        if (!emailInput.value) emailInput.value = savedUser.email || '';
+      }
+
       if (modal) {
         modal.classList.add('open');
         if (successAlert) successAlert.style.display = 'none';
@@ -1284,25 +1363,408 @@ function initConsultationForm() {
     });
   }
 
+  // Copy Sensei's official email button
+  if (copyEmailBtn) {
+    copyEmailBtn.addEventListener('click', () => {
+      navigator.clipboard.writeText('kapilsensei777@gmail.com').then(() => {
+        showToast('📋 Copied: kapilsensei777@gmail.com');
+        copyEmailBtn.textContent = 'Copied! ✅';
+        setTimeout(() => {
+          copyEmailBtn.textContent = 'Copy Email Address 📋';
+        }, 2500);
+      }).catch(() => {
+        showToast('Sensei Email: kapilsensei777@gmail.com');
+      });
+    });
+  }
+
   if (form) {
     form.addEventListener('submit', (e) => {
       e.preventDefault();
-      const name = document.getElementById('consult-name').value;
-      const email = document.getElementById('consult-email').value;
-      const phone = document.getElementById('consult-phone').value;
-      const goal = document.getElementById('consult-goal').value;
+
+      const name = nameInput.value.trim();
+      const email = emailInput.value.trim();
+      const phone = phoneInput ? phoneInput.value.trim() : '';
+      const goal = goalSelect ? goalSelect.value : '';
+      const goalText = goalSelect && goalSelect.selectedOptions[0] ? goalSelect.selectedOptions[0].textContent : goal;
+      const course = hiddenCourse ? hiddenCourse.value : 'Structured Study Programs';
+      const message = messageInput ? messageInput.value.trim() : '';
+
+      let hasError = false;
+
+      // Validate name
+      if (!validateName(name)) {
+        if (nameError) {
+          nameError.textContent = 'Please enter a valid student name (at least 2 characters).';
+          nameError.classList.add('active');
+        }
+        nameInput.classList.add('input-invalid');
+        hasError = true;
+      } else {
+        if (nameError) nameError.classList.remove('active');
+        nameInput.classList.remove('input-invalid');
+      }
+
+      // Validate email
+      if (!validateEmail(email)) {
+        if (emailError) {
+          emailError.textContent = 'Please enter a valid email address (e.g. name@gmail.com).';
+          emailError.classList.add('active');
+        }
+        emailInput.classList.add('input-invalid');
+        hasError = true;
+      } else {
+        if (emailError) emailError.classList.remove('active');
+        emailInput.classList.remove('input-invalid');
+      }
+
+      if (hasError) return;
+
+      const recipient = 'kapilsensei777@gmail.com';
+      const subject = `[Course Query] Academic Excellence: ${course} - ${name}`;
+      const emailBody = `Konnichiwa Kapil Sensei,
+
+I would like to submit an academic query regarding your Structured Study Programs:
+
+STUDENT DETAILS:
+• Full Name: ${name}
+• Email: ${email}
+• WhatsApp / Phone: ${phone || 'Not provided'}
+• Selected Program / Course: ${course}
+• Target Learning Goal: ${goalText}
+
+MY INQUIRY & QUESTIONS:
+${message || 'Please send me details regarding syllabus, schedule, and enrollment for this course.'}
+
+---
+Submitted via Kapil Sensei Official Portal (kapil-sensei-website)`;
+
+      const encodedSubject = encodeURIComponent(subject);
+      const encodedBody = encodeURIComponent(emailBody);
+
+      // Direct Gmail Compose URL
+      const gmailUrl = `https://mail.google.com/mail/?view=cm&fs=1&to=${recipient}&su=${encodedSubject}&body=${encodedBody}`;
+      // Universal mailto URL
+      const mailtoUrl = `mailto:${recipient}?subject=${encodedSubject}&body=${encodedBody}`;
+
+      if (gmailDirectBtn) gmailDirectBtn.href = gmailUrl;
+      if (mailtoBtn) mailtoBtn.href = mailtoUrl;
+
+      if (successDetails) {
+        successDetails.innerHTML = `Your query for <strong>${course}</strong> has been prepared for Kapil Sensei at <strong>kapilsensei777@gmail.com</strong>. Click below to launch your email!`;
+      }
 
       form.style.display = 'none';
       if (successAlert) {
         successAlert.style.display = 'block';
       }
-      showToast(`Arigatou ${name}! Inquiry received.`);
+
+      showToast(`Arigatou ${name}! Redirecting query to kapilsensei777@gmail.com...`);
+
+      // Attempt to launch Gmail compose directly
+      try {
+        window.open(gmailUrl, '_blank');
+      } catch (err) {
+        // Fallback handled by buttons
+      }
     });
   }
 }
 
 /* ===================================================================
-   10. TOAST NOTIFICATIONS
+   11. STUDENT AUTHENTICATION SYSTEM (Sign In / Sign Up)
+   =================================================================== */
+function initStudentAuth() {
+  const authModal = document.getElementById('auth-modal');
+  const closeAuthBtn = document.getElementById('close-auth-modal');
+  const authOpenBtn = document.getElementById('auth-open-btn');
+  const mobileAuthBtn = document.getElementById('mobile-auth-btn');
+
+  const tabSignIn = document.getElementById('auth-tab-signin');
+  const tabSignUp = document.getElementById('auth-tab-signup');
+  const formSignIn = document.getElementById('signin-form');
+  const formSignUp = document.getElementById('signup-form');
+
+  const switchToSignUp = document.getElementById('switch-to-signup');
+  const switchToSignIn = document.getElementById('switch-to-signin');
+
+  const navUserProfile = document.getElementById('nav-user-profile');
+  const userMenuBtn = document.getElementById('user-menu-btn');
+  const userDropdownMenu = document.getElementById('user-dropdown-menu');
+  const authLogoutBtn = document.getElementById('auth-logout-btn');
+  const mobileLogoutBtn = document.getElementById('mobile-logout-btn');
+  const mobileUserCard = document.getElementById('mobile-user-card');
+
+  // Password visibility toggle buttons
+  document.querySelectorAll('.pwd-toggle-btn').forEach(btn => {
+    btn.addEventListener('click', () => {
+      const targetId = btn.getAttribute('data-input-id');
+      const input = document.getElementById(targetId);
+      if (input) {
+        const isPassword = input.getAttribute('type') === 'password';
+        input.setAttribute('type', isPassword ? 'text' : 'password');
+        btn.textContent = isPassword ? '🙈' : '👁️';
+      }
+    });
+  });
+
+  // Switch tabs
+  const setTab = (tab) => {
+    if (tab === 'signup') {
+      if (tabSignUp) tabSignUp.classList.add('active');
+      if (tabSignIn) tabSignIn.classList.remove('active');
+      if (formSignUp) formSignUp.classList.add('active');
+      if (formSignIn) formSignIn.classList.remove('active');
+    } else {
+      if (tabSignIn) tabSignIn.classList.add('active');
+      if (tabSignUp) tabSignUp.classList.remove('active');
+      if (formSignIn) formSignIn.classList.add('active');
+      if (formSignUp) formSignUp.classList.remove('active');
+    }
+  };
+
+  if (tabSignIn) tabSignIn.addEventListener('click', () => setTab('signin'));
+  if (tabSignUp) tabSignUp.addEventListener('click', () => setTab('signup'));
+  if (switchToSignUp) switchToSignUp.addEventListener('click', () => setTab('signup'));
+  if (switchToSignIn) switchToSignIn.addEventListener('click', () => setTab('signin'));
+
+  // Open & Close Modal
+  const openAuth = (initialTab = 'signin') => {
+    setTab(initialTab);
+    if (authModal) authModal.classList.add('open');
+  };
+
+  const closeAuth = () => {
+    if (authModal) authModal.classList.remove('open');
+  };
+
+  if (authOpenBtn) authOpenBtn.addEventListener('click', () => openAuth('signin'));
+  if (mobileAuthBtn) mobileAuthBtn.addEventListener('click', () => openAuth('signin'));
+  if (closeAuthBtn) closeAuthBtn.addEventListener('click', closeAuth);
+  if (authModal) {
+    authModal.addEventListener('click', (e) => {
+      if (e.target === authModal) closeAuth();
+    });
+  }
+
+  // Update navbar & mobile drawer based on auth state
+  const syncAuthState = () => {
+    const user = getStoredUser();
+    if (user && user.isLoggedIn) {
+      if (authOpenBtn) authOpenBtn.style.display = 'none';
+      if (navUserProfile) navUserProfile.style.display = 'block';
+
+      const initial = user.name ? user.name.charAt(0).toUpperCase() : 'S';
+      const displayName = document.getElementById('user-display-name');
+      const avatarBadge = document.getElementById('user-avatar-badge');
+      const dropdownName = document.getElementById('user-dropdown-name');
+      const dropdownEmail = document.getElementById('user-dropdown-email');
+      const dropdownGoal = document.getElementById('user-dropdown-goal');
+
+      if (displayName) displayName.textContent = user.name.split(' ')[0];
+      if (avatarBadge) avatarBadge.textContent = initial;
+      if (dropdownName) dropdownName.textContent = user.name;
+      if (dropdownEmail) dropdownEmail.textContent = user.email;
+      if (dropdownGoal && user.goal) dropdownGoal.textContent = `🎯 ${user.goal}`;
+
+      // Mobile sync
+      if (mobileAuthBtn) mobileAuthBtn.style.display = 'none';
+      if (mobileUserCard) mobileUserCard.style.display = 'flex';
+      const mAvatar = document.getElementById('mobile-user-avatar');
+      const mName = document.getElementById('mobile-user-name');
+      const mEmail = document.getElementById('mobile-user-email');
+      if (mAvatar) mAvatar.textContent = initial;
+      if (mName) mName.textContent = user.name;
+      if (mEmail) mEmail.textContent = user.email;
+    } else {
+      if (authOpenBtn) authOpenBtn.style.display = 'inline-flex';
+      if (navUserProfile) navUserProfile.style.display = 'none';
+      if (userDropdownMenu) userDropdownMenu.classList.remove('active');
+
+      if (mobileAuthBtn) mobileAuthBtn.style.display = 'block';
+      if (mobileUserCard) mobileUserCard.style.display = 'none';
+    }
+  };
+
+  // User menu dropdown toggle
+  if (userMenuBtn) {
+    userMenuBtn.addEventListener('click', (e) => {
+      e.stopPropagation();
+      if (userDropdownMenu) {
+        userDropdownMenu.classList.toggle('active');
+      }
+    });
+  }
+
+  // Close dropdown on click outside
+  document.addEventListener('click', (e) => {
+    if (userDropdownMenu && !userDropdownMenu.contains(e.target) && (!userMenuBtn || !userMenuBtn.contains(e.target))) {
+      userDropdownMenu.classList.remove('active');
+    }
+  });
+
+  // Sign out
+  const handleLogout = () => {
+    clearStoredUser();
+    syncAuthState();
+    showToast('Signed out successfully. またね (See you soon)!');
+  };
+
+  if (authLogoutBtn) authLogoutBtn.addEventListener('click', handleLogout);
+  if (mobileLogoutBtn) mobileLogoutBtn.addEventListener('click', handleLogout);
+
+  // Sign Up Form Submission
+  if (formSignUp) {
+    formSignUp.addEventListener('submit', (e) => {
+      e.preventDefault();
+      const nameInput = document.getElementById('signup-name');
+      const emailInput = document.getElementById('signup-email');
+      const pwdInput = document.getElementById('signup-password');
+      const goalInput = document.getElementById('signup-goal');
+
+      const nameError = document.getElementById('signup-name-error');
+      const emailError = document.getElementById('signup-email-error');
+      const pwdError = document.getElementById('signup-password-error');
+
+      const name = nameInput.value.trim();
+      const email = emailInput.value.trim();
+      const password = pwdInput.value;
+      const goal = goalInput ? goalInput.value : 'General Japanese';
+
+      let hasError = false;
+
+      // Validate Student Name
+      if (!validateName(name)) {
+        if (nameError) {
+          nameError.textContent = 'Please enter a valid student name (letters only, min 2 characters).';
+          nameError.classList.add('active');
+        }
+        nameInput.classList.add('input-invalid');
+        hasError = true;
+      } else {
+        if (nameError) nameError.classList.remove('active');
+        nameInput.classList.remove('input-invalid');
+      }
+
+      // Validate Email ID
+      if (!validateEmail(email)) {
+        if (emailError) {
+          emailError.textContent = 'Please enter a valid email address (e.g. student@gmail.com).';
+          emailError.classList.add('active');
+        }
+        emailInput.classList.add('input-invalid');
+        hasError = true;
+      } else {
+        if (emailError) emailError.classList.remove('active');
+        emailInput.classList.remove('input-invalid');
+      }
+
+      // Validate Password
+      if (password.length < 6) {
+        if (pwdError) {
+          pwdError.textContent = 'Password must be at least 6 characters.';
+          pwdError.classList.add('active');
+        }
+        pwdInput.classList.add('input-invalid');
+        hasError = true;
+      } else {
+        if (pwdError) pwdError.classList.remove('active');
+        pwdInput.classList.remove('input-invalid');
+      }
+
+      if (hasError) return;
+
+      const newUser = {
+        name,
+        email,
+        goal,
+        isLoggedIn: true,
+        registeredAt: new Date().toISOString()
+      };
+
+      setStoredUser(newUser);
+      syncAuthState();
+      closeAuth();
+      formSignUp.reset();
+      showToast(`🎉 Welcome to Kapil Sensei Academy, ${name}!`);
+    });
+  }
+
+  // Sign In Form Submission
+  if (formSignIn) {
+    formSignIn.addEventListener('submit', (e) => {
+      e.preventDefault();
+      const emailInput = document.getElementById('signin-email');
+      const pwdInput = document.getElementById('signin-password');
+      const emailError = document.getElementById('signin-email-error');
+      const pwdError = document.getElementById('signin-password-error');
+
+      const email = emailInput.value.trim();
+      const password = pwdInput.value;
+
+      let hasError = false;
+
+      if (!validateEmail(email)) {
+        if (emailError) {
+          emailError.textContent = 'Please enter a valid email address.';
+          emailError.classList.add('active');
+        }
+        emailInput.classList.add('input-invalid');
+        hasError = true;
+      } else {
+        if (emailError) emailError.classList.remove('active');
+        emailInput.classList.remove('input-invalid');
+      }
+
+      if (password.length < 1) {
+        if (pwdError) {
+          pwdError.textContent = 'Please enter your password.';
+          pwdError.classList.add('active');
+        }
+        pwdInput.classList.add('input-invalid');
+        hasError = true;
+      } else {
+        if (pwdError) pwdError.classList.remove('active');
+        pwdInput.classList.remove('input-invalid');
+      }
+
+      if (hasError) return;
+
+      const existingUser = getStoredUser();
+      let userName = 'Student';
+      let userGoal = 'JLPT / SSW';
+
+      if (existingUser && existingUser.email.toLowerCase() === email.toLowerCase()) {
+        userName = existingUser.name;
+        userGoal = existingUser.goal || userGoal;
+      } else {
+        // Derive clean name from email prefix
+        const namePart = email.split('@')[0].replace(/[._-]/g, ' ');
+        userName = namePart.charAt(0).toUpperCase() + namePart.slice(1);
+      }
+
+      const activeUser = {
+        name: userName,
+        email: email,
+        goal: userGoal,
+        isLoggedIn: true,
+        lastLogin: new Date().toISOString()
+      };
+
+      setStoredUser(activeUser);
+      syncAuthState();
+      closeAuth();
+      formSignIn.reset();
+      showToast(`🌸 おかえりなさい! Welcome back, ${userName}!`);
+    });
+  }
+
+  // Initial session check
+  syncAuthState();
+}
+
+/* ===================================================================
+   12. TOAST NOTIFICATIONS
    =================================================================== */
 function showToast(message) {
   const toast = document.getElementById('toast');
@@ -1312,5 +1774,5 @@ function showToast(message) {
 
   setTimeout(() => {
     toast.style.display = 'none';
-  }, 3200);
+  }, 3400);
 }
