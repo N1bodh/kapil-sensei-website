@@ -1,0 +1,1174 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="dark">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Kapil Sensei | Learn Japanese, JLPT, JFT-Basic & SSW Japan Career Hub</title>
+  <meta name="description" content="Official website of Kapil Sensei. Learn Japanese language from basics to advanced, master JFT-Basic & JLPT exams, and prepare for SSW (Specified Skilled Worker) visas in Japan.">
+  <meta name="keywords" content="Kapil Sensei, Learn Japanese, JFT-Basic, JLPT N5, JLPT N4, SSW Japan, Kaigo Caregiving, Agriculture Japan, Food Service Japan, Japanese Language Nepal, Study in Japan">
+  
+  <!-- Open Graph / Social Media Meta -->
+  <meta property="og:title" content="Kapil Sensei | Japanese Language & SSW Japan Portal">
+  <meta property="og:description" content="Your journey to Japan starts here. Free lessons, interactive flashcards, JFT-Basic tests, and SSW career guidance.">
+  <meta property="og:image" content="assets/logo.png">
+  <meta property="og:url" content="https://www.youtube.com/@KapilSensei">
+  <meta property="og:type" content="website">
+
+  <!-- Favicon -->
+  <link rel="icon" type="image/png" href="assets/logo.png">
+
+  <!-- Google Fonts: Inter, Outfit, Noto Sans JP -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@400;500;700;900&family=Outfit:wght@400;500;600;700;800;900&family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <!-- Ambient Falling Sakura Blossom Canvas -->
+  <canvas id="sakura-canvas"></canvas>
+
+  <!-- Sticky Announcement Bar -->
+  <div class="announcement-bar">
+    <div class="announcement-content">
+      <span class="badge-pulse">NEW</span>
+      <span>🌸 Watch our latest lessons on YouTube: <strong>JLPT N5/N4 & JFT-Basic Mastery</strong></span>
+      <a href="https://www.youtube.com/@KapilSensei?sub_confirmation=1" target="_blank" rel="noopener" class="announcement-link">
+        Subscribe Now <span>&rarr;</span>
+      </a>
+    </div>
+  </div>
+
+  <!-- Navigation Bar -->
+  <header class="navbar" id="navbar">
+    <div class="nav-container">
+      <a href="#hero" class="brand-logo" aria-label="Kapil Sensei Home">
+        <div class="logo-avatar-wrapper">
+          <img src="assets/logo.png" alt="Kapil Sensei Official Logo" class="avatar-img" />
+          <div class="avatar-ring"></div>
+        </div>
+        <div class="logo-text-group">
+          <span class="brand-title">KAPIL SENSEI</span>
+          <span class="brand-subtitle">カピル<ruby>先生<rt>せんせい</rt></ruby> • JAPANESE ACADEMY</span>
+        </div>
+      </a>
+
+      <nav class="nav-links" id="nav-links">
+        <!-- Interactive Subjects & Topics Dropdown Menu -->
+        <div class="nav-dropdown" id="nav-topic-dropdown">
+          <button class="nav-dropdown-btn" id="nav-dropdown-trigger" aria-expanded="false" aria-haspopup="true">
+            <span class="dropdown-btn-text">📚 Topics / Subjects</span>
+            <svg class="dropdown-arrow" viewBox="0 0 20 20" width="16" height="16" fill="currentColor">
+              <path fill-rule="evenodd" d="M5.293 7.293a1 1 0 011.414 0L10 10.586l3.293-3.293a1 1 0 111.414 1.414l-4 4a1 1 0 01-1.414 0l-4-4a1 1 0 010-1.414z" clip-rule="evenodd" />
+            </svg>
+          </button>
+          <div class="nav-dropdown-menu" id="nav-dropdown-menu">
+            <a href="#featured-video" class="nav-dropdown-item" data-topic="featured-video">
+              <span class="dropdown-item-icon">🎥</span>
+              <div class="dropdown-item-info">
+                <span class="dropdown-item-title">Video Lessons</span>
+                <span class="dropdown-item-sub"><ruby>動画授業<rt>どうがじゅぎょう</rt></ruby> • JLPT & JFT</span>
+              </div>
+            </a>
+            <a href="#gallery" class="nav-dropdown-item">
+              <span class="dropdown-item-icon">🖼️</span>
+              <div class="dropdown-item-info">
+                <span class="dropdown-item-title">Image Gallery — Japan & Classroom</span>
+                <span class="dropdown-item-sub"><ruby>写真集<rt>しゃしんしゅう</rt></ruby> • Why Study Japanese?</span>
+              </div>
+            </a>
+            <a href="#ssw-hub" class="nav-dropdown-item" data-topic="ssw-hub">
+              <span class="dropdown-item-icon">💼</span>
+              <div class="dropdown-item-info">
+                <span class="dropdown-item-title">SSW Japan Visa Hub</span>
+                <span class="dropdown-item-sub"><ruby>特定技能<rt>とくていぎのう</rt></ruby> • 4 Job Sectors</span>
+              </div>
+            </a>
+            <a href="#practice-lab" class="nav-dropdown-item" data-topic="practice-lab">
+              <span class="dropdown-item-icon">🗂️</span>
+              <div class="dropdown-item-info">
+                <span class="dropdown-item-title">Interactive Audio Flashcards</span>
+                <span class="dropdown-item-sub"><ruby>単語帳<rt>たんごちょう</rt></ruby> • Native Audio</span>
+              </div>
+            </a>
+            <a href="#quiz-hub" class="nav-dropdown-item" data-topic="quiz-hub">
+              <span class="dropdown-item-icon">⏱️</span>
+              <div class="dropdown-item-info">
+                <span class="dropdown-item-title">JFT & JLPT Mock Quiz</span>
+                <span class="dropdown-item-sub"><ruby>模擬試験<rt>もぎしけん</rt></ruby> • Instant Scoring</span>
+              </div>
+            </a>
+            <a href="#courses" class="nav-dropdown-item" data-topic="courses">
+              <span class="dropdown-item-icon">📖</span>
+              <div class="dropdown-item-info">
+                <span class="dropdown-item-title">Structured Study Courses</span>
+                <span class="dropdown-item-sub"><ruby>講座一覧<rt>こうざいちらん</rt></ruby> • N5, A2, N3</span>
+              </div>
+            </a>
+            <a href="#about" class="nav-dropdown-item" data-topic="about">
+              <span class="dropdown-item-icon">👨‍🏫</span>
+              <div class="dropdown-item-info">
+                <span class="dropdown-item-title">About Kapil Sensei</span>
+                <span class="dropdown-item-sub"><ruby>講師紹介<rt>こうししょうかい</rt></ruby> • Pedagogy</span>
+              </div>
+            </a>
+            <a href="#faq" class="nav-dropdown-item" data-topic="faq">
+              <span class="dropdown-item-icon">❓</span>
+              <div class="dropdown-item-info">
+                <span class="dropdown-item-title">Frequently Asked Questions</span>
+                <span class="dropdown-item-sub">よくある<ruby>質問<rt>しつもん</rt></ruby></span>
+              </div>
+            </a>
+            <div class="nav-dropdown-divider"></div>
+            <a href="#all" class="nav-dropdown-item dropdown-show-all" data-topic="all">
+              <span class="dropdown-item-icon">🌸</span>
+              <div class="dropdown-item-info">
+                <span class="dropdown-item-title">Show All Topics (Full Page)</span>
+                <span class="dropdown-item-sub"><ruby>全科目表示<rt>ぜんかもくひょうじ</rt></ruby></span>
+              </div>
+            </a>
+          </div>
+        </div>
+
+        <a href="#featured-video" class="nav-link" data-topic="featured-video">Videos</a>
+        <a href="#gallery" class="nav-link">🖼️ Gallery</a>
+        <a href="#ssw-hub" class="nav-link" data-topic="ssw-hub">SSW Japan (<ruby>特定技能<rt>とくていぎのう</rt></ruby>)</a>
+        <a href="#practice-lab" class="nav-link" data-topic="practice-lab">Flashcards</a>
+        <a href="#quiz-hub" class="nav-link" data-topic="quiz-hub">Mock Quiz</a>
+        <a href="#courses" class="nav-link" data-topic="courses">Courses</a>
+        <a href="#about" class="nav-link" data-topic="about">About Sensei</a>
+        <div class="mobile-drawer-cta">
+          <a href="https://www.youtube.com/@KapilSensei?sub_confirmation=1" target="_blank" rel="noopener" class="btn btn-youtube btn-block">
+            <svg viewBox="0 0 24 24" width="20" height="20" fill="currentColor">
+              <path d="M23.498 6.186a3.016 3.016 0 0 0-2.122-2.136C19.505 3.545 12 3.545 12 3.545s-7.505 0-9.377.505A3.017 3.017 0 0 0 .502 6.186C0 8.07 0 12 0 12s0 3.93.502 5.814a3.016 3.016 0 0 0 2.122 2.136c1.871.505 9.376.505 9.376.505s7.505 0 9.377-.505a3.015 3.015 0 0 0 2.122-2.136C24 15.93 24 12 24 12s0-3.93-.502-5.814zM9.545 15.568V8.432L15.818 12l-6.273 3.568z"/>
+            </svg>
+            <span>Subscribe on YouTube</span>
+          </a>
+        </div>
+      </nav>
+
+      <div class="nav-actions">
+        <!-- Sakura Effect Toggle -->
+        <button id="sakura-toggle" class="icon-btn" title="Toggle Falling Sakura Petals" aria-label="Toggle Sakura Effect">
+          🌸
+        </button>
+
+        <!-- Theme Toggle -->
+        <button id="theme-toggle" class="icon-btn" title="Toggle Light/Dark Theme" aria-label="Toggle Theme">
+          <svg class="sun-icon" viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="2">
+            <circle cx="12" cy="12" r="5"></circle>
+            <path d="M12 1v2M12 21v2M4.22 4.22l1.42 1.42M18.36 18.36l1.42 1.42M1 12h2M21 12h2M4.22 19.78l1.42-1.42M18.36 5.64l1.42-1.42"></path>
+          </svg>
+          <svg class="moon-icon" viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="2">
+            <path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"></path>
+          </svg>
+        </button>
+
+        <!-- YouTube Subscribe CTA -->
+        <a href="https://www.youtube.com/@KapilSensei?sub_confirmation=1" target="_blank" rel="noopener" class="btn btn-youtube nav-youtube-btn" aria-label="Subscribe on YouTube">
+          <svg viewBox="0 0 24 24" width="20" height="20" fill="currentColor">
+            <path d="M23.498 6.186a3.016 3.016 0 0 0-2.122-2.136C19.505 3.545 12 3.545 12 3.545s-7.505 0-9.377.505A3.017 3.017 0 0 0 .502 6.186C0 8.07 0 12 0 12s0 3.93.502 5.814a3.016 3.016 0 0 0 2.122 2.136c1.871.505 9.376.505 9.376.505s7.505 0 9.377-.505a3.015 3.015 0 0 0 2.122-2.136C24 15.93 24 12 24 12s0-3.93-.502-5.814zM9.545 15.568V8.432L15.818 12l-6.273 3.568z"/>
+          </svg>
+          <span class="btn-youtube-text">Subscribe</span>
+        </a>
+
+        <!-- Mobile Menu Toggle Button -->
+        <button id="mobile-menu-btn" class="mobile-menu-btn" aria-label="Open Navigation Menu" aria-expanded="false">
+          <span></span>
+          <span></span>
+          <span></span>
+        </button>
+      </div>
+    </div>
+  </header>
+  <div id="mobile-menu-backdrop" class="mobile-menu-backdrop" aria-hidden="true"></div>
+
+  <main>
+    <!-- Hero Section -->
+    <section class="hero-section" id="hero">
+      <div class="hero-background-kanji">日本語 • 夢</div>
+      <div class="hero-container">
+        <div class="hero-badge">
+          <span class="badge-flag">🇯🇵</span>
+          <span>Official Learning Portal • <ruby>日本語教育<rt>にほんごきょういく</rt></ruby> &amp; <ruby>特定技能<rt>とくていぎのう</rt></ruby></span>
+        </div>
+
+        <h1 class="hero-title">
+          Master Japanese & Build Your Future in Japan with <span class="gradient-text">Kapil Sensei</span>
+        </h1>
+
+        <p class="hero-description">
+          Your complete pathway to Japan! Free structured YouTube lectures, <strong>JFT-Basic (A2)</strong> & <strong>JLPT N5–N3</strong> exam masterclasses, and specialized <strong>SSW (Specified Skilled Worker)</strong> guidance for Caregiving, Agriculture, Food Service & Hospitality.
+        </p>
+
+        <div class="hero-cta-group">
+          <button id="open-intro-video-btn" class="btn btn-primary btn-glow">
+            <svg viewBox="0 0 24 24" width="22" height="22" fill="currentColor">
+              <path d="M8 5v14l11-7z"/>
+            </svg>
+            <span>Watch Intro Class</span>
+          </button>
+          <a href="#ssw-hub" class="btn btn-glass">
+            <span>SSW Visa Sectors</span>
+            <svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="2">
+              <path d="M5 12h14M12 5l7 7-7 7"/>
+            </svg>
+          </a>
+          <button class="btn btn-secondary open-consultation-btn">
+            <span>Free Consultation</span>
+          </button>
+        </div>
+
+        <!-- Metric Cards -->
+        <div class="hero-stats-grid">
+          <div class="stat-card">
+            <div class="stat-icon">🎓</div>
+            <div class="stat-content">
+              <div class="stat-number">JFT & JLPT</div>
+              <div class="stat-label">N5, N4 & A2 Prep</div>
+            </div>
+          </div>
+          <div class="stat-card">
+            <div class="stat-icon">💼</div>
+            <div class="stat-content">
+              <div class="stat-number">4 SSW Sectors</div>
+              <div class="stat-label">Kaigo, Agri, Food, Hotel</div>
+            </div>
+          </div>
+          <div class="stat-card">
+            <div class="stat-icon">🌸</div>
+            <div class="stat-content">
+              <div class="stat-number">Free Audio</div>
+              <div class="stat-label">Pronunciation & Kanji Lab</div>
+            </div>
+          </div>
+          <div class="stat-card">
+            <div class="stat-icon">🤝</div>
+            <div class="stat-content">
+              <div class="stat-number">Nepal & Japan</div>
+              <div class="stat-label">Direct Career Guidance</div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ═══════════════════════════════════════════════════════════════
+         JAPAN PANORAMIC ATTRACTION BANNER
+         Full-width horizontal scroll strip — Famous Places, Foods & Seasons
+         ═══════════════════════════════════════════════════════════════ -->
+    <div class="japan-banner-strip" id="japan-banner-strip">
+      <div class="japan-banner-overlay">
+        <div class="japan-banner-text-group">
+          <span class="japan-banner-eyebrow">🇯🇵 DISCOVER JAPAN</span>
+          <h2 class="japan-banner-headline"><ruby>日本<rt>にほん</rt></ruby> Awaits You!</h2>
+          <p class="japan-banner-sub">Famous Places • Iconic Foods • Four Seasons • Career Opportunities</p>
+        </div>
+        <a href="#ssw-hub" class="btn btn-glass japan-banner-cta">Explore Japan Career &rarr;</a>
+      </div>
+      <img src="assets/japan_banner.jpg" alt="Japan famous landmarks collage – Mount Fuji, Kyoto temple, cherry blossoms, Japanese food, Tokyo skyline" class="japan-banner-img" loading="eager" />
+    </div>
+
+    <!-- ═══════════════════════════════════════════════════════════════
+         IMAGE GALLERY – Japan + Classroom Life Section
+         ═══════════════════════════════════════════════════════════════ -->
+    <section class="section gallery-section" id="gallery">
+      <div class="container">
+        <div class="section-header">
+          <div class="section-eyebrow">🌸 WHY STUDY JAPANESE?</div>
+          <h2 class="section-title">Your <span class="gradient-text">Dream Life in Japan</span> Starts Here</h2>
+          <p class="section-subtitle">
+            From Nepali classrooms to Japanese workplaces — see how students like you are transforming their lives with Kapil Sensei's proven teaching approach.
+          </p>
+        </div>
+
+        <!-- Gallery Grid -->
+        <div class="gallery-grid">
+
+          <!-- Feature Card 1: Kapil Sensei Teaching (Large Span) -->
+          <div class="gallery-card gallery-card-large" id="gallery-teaching">
+            <img src="assets/kapil_sensei_teaching.jpg" 
+                 alt="Kapil Sensei teaching Japanese language to Nepali students in a classroom" 
+                 class="gallery-img" loading="lazy" />
+            <div class="gallery-overlay">
+              <div class="gallery-overlay-content">
+                <span class="gallery-tag">👨‍🏫 Kapil Sensei Live</span>
+                <h3 class="gallery-overlay-title">Interactive Classroom Learning</h3>
+                <p class="gallery-overlay-desc">Kapil Sensei making Japanese <ruby>楽<rt>たの</rt></ruby>しい (fun) for every student. Real classroom. Real results.</p>
+              </div>
+            </div>
+            <div class="gallery-card-badge badge-live">LIVE CLASS</div>
+          </div>
+
+          <!-- Feature Card 2: Students Enjoying Study -->
+          <div class="gallery-card" id="gallery-students">
+            <img src="assets/classroom_study.jpg" 
+                 alt="Nepali students happily studying Japanese language together in class with flashcards and textbooks" 
+                 class="gallery-img" loading="lazy" />
+            <div class="gallery-overlay">
+              <div class="gallery-overlay-content">
+                <span class="gallery-tag">🎓 Our Students</span>
+                <h3 class="gallery-overlay-title">Study, Laugh, Achieve Together</h3>
+                <p class="gallery-overlay-desc">Our vibrant student community makes Japanese learning exciting and highly effective.</p>
+              </div>
+            </div>
+            <div class="gallery-card-badge badge-community">COMMUNITY</div>
+          </div>
+
+          <!-- Feature Card 3: Japan Sakura/Mt. Fuji (Your destination) -->
+          <div class="gallery-card" id="gallery-japan">
+            <img src="assets/japan_gallery_sakura.jpg" 
+                 alt="Mount Fuji with cherry blossom sakura trees reflected in lake Kawaguchi, Japan" 
+                 class="gallery-img" loading="lazy" />
+            <div class="gallery-overlay">
+              <div class="gallery-overlay-content">
+                <span class="gallery-tag">🌸 Your Destination</span>
+                <h3 class="gallery-overlay-title">Japan: Land of <ruby>夢<rt>ゆめ</rt></ruby> (Dreams)</h3>
+                <p class="gallery-overlay-desc">Mount Fuji, cherry blossoms, four seasons — all of this awaits you after your language journey!</p>
+              </div>
+            </div>
+            <div class="gallery-card-badge badge-japan">JAPAN</div>
+          </div>
+
+        </div>
+
+        <!-- Gallery Stats Row -->
+        <div class="gallery-stats-strip">
+          <div class="gallery-stat-item">
+            <span class="gallery-stat-icon">🎌</span>
+            <div class="gallery-stat-text">
+              <strong>Live Classes</strong>
+              <span>Interactive Classroom Lessons</span>
+            </div>
+          </div>
+          <div class="gallery-stat-divider"></div>
+          <div class="gallery-stat-item">
+            <span class="gallery-stat-icon">👥</span>
+            <div class="gallery-stat-text">
+              <strong>Nepal → Japan</strong>
+              <span>Students Successfully Placed</span>
+            </div>
+          </div>
+          <div class="gallery-stat-divider"></div>
+          <div class="gallery-stat-item">
+            <span class="gallery-stat-icon">🌸</span>
+            <div class="gallery-stat-text">
+              <strong>4 Seasons</strong>
+              <span>Experience Life in Japan</span>
+            </div>
+          </div>
+          <div class="gallery-stat-divider"></div>
+          <div class="gallery-stat-item">
+            <span class="gallery-stat-icon">💴</span>
+            <div class="gallery-stat-text">
+              <strong>¥200,000+</strong>
+              <span>Average Monthly Salary in Japan</span>
+            </div>
+          </div>
+        </div>
+
+        <!-- Gallery CTA -->
+        <div class="center-cta-box">
+          <p>Ready to begin your journey? Join thousands of Nepali students already on their path to Japan with Kapil Sensei!</p>
+          <div style="display:flex;gap:14px;justify-content:center;flex-wrap:wrap;margin-top:14px;">
+            <button class="btn btn-primary btn-glow open-consultation-btn">
+              🎌 Start My Japan Journey
+            </button>
+            <a href="https://www.youtube.com/@KapilSensei?sub_confirmation=1" target="_blank" rel="noopener" class="btn btn-youtube">
+              <svg viewBox="0 0 24 24" width="18" height="18" fill="currentColor"><path d="M23.498 6.186a3.016 3.016 0 0 0-2.122-2.136C19.505 3.545 12 3.545 12 3.545s-7.505 0-9.377.505A3.017 3.017 0 0 0 .502 6.186C0 8.07 0 12 0 12s0 3.93.502 5.814a3.016 3.016 0 0 0 2.122 2.136c1.871.505 9.376.505 9.376.505s7.505 0 9.377-.505a3.015 3.015 0 0 0 2.122-2.136C24 15.93 24 12 24 12s0-3.93-.502-5.814zM9.545 15.568V8.432L15.818 12l-6.273 3.568z"/></svg>
+              Watch Free Lessons
+            </a>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Interactive Topic Navigator & Dropdown Menu Control Console -->
+    <section class="topic-navigator-section" id="topic-navigator">
+      <div class="container">
+        <div class="topic-selector-card">
+          <div class="topic-selector-top">
+            <div class="topic-selector-heading">
+              <span class="topic-pill-tag">✨ COMPACT STUDY EXPLORER</span>
+              <h2 class="topic-selector-title">
+                Choose a <span class="gradient-text">Subject / Topic</span> to Study
+              </h2>
+              <p class="topic-selector-desc">
+                Select any subject from the dropdown menu below. Only your chosen topic will be displayed on screen — reducing page size, eliminating distraction, and helping you focus!
+              </p>
+            </div>
+            
+            <div class="topic-mode-indicator" id="topic-mode-indicator">
+              <span class="status-dot"></span>
+              <span id="topic-status-text">Mode: Full Overview (All Topics)</span>
+            </div>
+          </div>
+
+          <!-- Dropdown Control Box -->
+          <div class="topic-control-box">
+            <div class="topic-dropdown-wrapper">
+              <label for="topic-select-dropdown" class="topic-select-label">
+                <svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="2">
+                  <path d="M4 6h16M4 12h16M4 18h7"/>
+                </svg>
+                <span>Select Subject:</span>
+              </label>
+
+              <!-- Native & Custom Dropdown Select -->
+              <div class="topic-custom-select-container">
+                <select id="topic-select-dropdown" class="topic-native-select" aria-label="Select Japanese Topic or Subject to Display">
+                  <option value="all" selected>🌸 Show All Topics (Full Page Overview)</option>
+                  <option value="featured-video">🎥 Video Lessons &amp; Showcase (JLPT &amp; JFT Masterclasses)</option>
+                  <option value="ssw-hub">💼 SSW Japan Career Hub (4 Work Sectors &amp; Roadmap)</option>
+                  <option value="practice-lab">🗂️ Interactive Audio Flashcards Lab (Pronunciation)</option>
+                  <option value="quiz-hub">⏱️ JFT-Basic &amp; JLPT Mock Quiz Arena (Real Exam Simulation)</option>
+                  <option value="courses">📖 Structured Study Courses &amp; Syllabus (N5 to N3)</option>
+                  <option value="about">👨‍🏫 About Kapil Sensei (Mission, Credentials &amp; Guidance)</option>
+                  <option value="faq">❓ Frequently Asked Questions (Visas &amp; Eligibility)</option>
+                </select>
+                <div class="custom-select-arrow">
+                  <svg viewBox="0 0 20 20" width="18" height="18" fill="currentColor">
+                    <path fill-rule="evenodd" d="M5.293 7.293a1 1 0 011.414 0L10 10.586l3.293-3.293a1 1 0 111.414 1.414l-4 4a1 1 0 01-1.414 0l-4-4a1 1 0 010-1.414z" clip-rule="evenodd"/>
+                  </svg>
+                </div>
+              </div>
+
+              <button id="reset-all-topics-btn" class="btn btn-outline-sm reset-topics-btn" title="Show all topics together">
+                <span>Show All Topics</span>
+              </button>
+            </div>
+
+            <!-- Quick-Tap Pills for Instant Topic Switch -->
+            <div class="topic-pills-row" id="topic-pills-row" role="tablist" aria-label="Quick Topic Switcher">
+              <button class="topic-pill active" data-topic="all" role="tab" aria-selected="true">
+                <span>🌸 All Topics</span>
+              </button>
+              <button class="topic-pill" data-topic="featured-video" role="tab" aria-selected="false">
+                <span>🎥 Videos</span>
+              </button>
+              <button class="topic-pill" data-topic="ssw-hub" role="tab" aria-selected="false">
+                <span>💼 SSW Visa</span>
+              </button>
+              <button class="topic-pill" data-topic="practice-lab" role="tab" aria-selected="false">
+                <span>🗂️ Flashcards</span>
+              </button>
+              <button class="topic-pill" data-topic="quiz-hub" role="tab" aria-selected="false">
+                <span>⏱️ Mock Quiz</span>
+              </button>
+              <button class="topic-pill" data-topic="courses" role="tab" aria-selected="false">
+                <span>📖 Courses</span>
+              </button>
+              <button class="topic-pill" data-topic="about" role="tab" aria-selected="false">
+                <span>👨‍🏫 About</span>
+              </button>
+              <button class="topic-pill" data-topic="faq" role="tab" aria-selected="false">
+                <span>❓ FAQ</span>
+              </button>
+            </div>
+          </div>
+        </div>
+
+        <!-- Dynamic Sticky Subject Header (Displayed when a specific topic is active) -->
+        <div class="active-subject-banner" id="active-subject-banner" style="display: none;">
+          <div class="active-subject-info">
+            <span class="active-subject-badge">FOCUSED SUBJECT VIEW</span>
+            <h3 class="active-subject-title" id="active-subject-title">SSW Japan Visa Hub</h3>
+            <span class="active-subject-kanji" id="active-subject-kanji"><ruby>特定技能<rt>とくていぎのう</rt></ruby></span>
+          </div>
+          <div class="active-subject-controls">
+            <button class="btn btn-glass-sm" id="prev-topic-btn" title="Previous Subject">
+              <span>&larr; Prev Subject</span>
+            </button>
+            <button class="btn btn-glass-sm" id="next-topic-btn" title="Next Subject">
+              <span>Next Subject &rarr;</span>
+            </button>
+            <button class="btn btn-secondary-sm" id="banner-show-all-btn" title="Show all subjects">
+              <span>Show All Subjects 👁️</span>
+            </button>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Featured Video Showcase Section -->
+    <section class="section topic-section" id="featured-video" data-topic-id="featured-video" data-topic-name="Video Lessons &amp; Masterclasses" data-topic-kanji="動画授業">
+      <div class="container">
+        <div class="section-header">
+          <div class="section-eyebrow">FEATURED YOUTUBE LECTURES</div>
+          <h2 class="section-title">Learn Directly from <span class="gradient-text">Kapil Sensei</span></h2>
+          <p class="section-subtitle">
+            High-definition video lessons recorded with crystal clear explanations in Nepali and English, tailored for your success.
+          </p>
+        </div>
+
+        <!-- Featured Spotlight Card -->
+        <div class="video-spotlight-card">
+          <div class="video-embed-container">
+            <iframe 
+              id="main-yt-iframe"
+              src="https://www.youtube.com/embed/OwOxFUSe6ts?rel=0&enablejsapi=1" 
+              title="Welcome to Kapil Sensei! Japanese class for JLPT, JFT-Basic & SSW" 
+              allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" 
+              allowfullscreen>
+            </iframe>
+          </div>
+          <div class="video-spotlight-info">
+            <div class="spotlight-tag">
+              <span class="tag-dot"></span>
+              <span>OFFICIAL WELCOME & ORIENTATION</span>
+            </div>
+            <h3 class="spotlight-title">Welcome to Kapil Sensei! Your daily Japanese class for JLPT, JFT-Basic & SSW.</h3>
+            <p class="spotlight-desc">
+              Get an overview of the roadmap to Japan: how to master Hiragana, Katakana, Kanji, Minna no Nihongo grammar rules, JFT-Basic scoring tricks, and specific SSW interview skills. <ruby>一緒<rt>いっしょ</rt></ruby>に<ruby>頑張<rt>がんば</rt></ruby>りましょう (Let's work hard together)!
+            </p>
+            <div class="spotlight-meta">
+              <span class="meta-item">🎌 Instructor: <strong>Kapil Giri (Kapil Sensei)</strong></span>
+              <span class="meta-item">📍 Target: <strong>JLPT N5/N4, JFT-Basic, SSW</strong></span>
+            </div>
+            <div class="spotlight-actions">
+              <a href="https://www.youtube.com/watch?v=OwOxFUSe6ts" target="_blank" rel="noopener" class="btn btn-youtube">
+                Watch on YouTube
+              </a>
+              <button class="btn btn-glass open-consultation-btn">
+                Ask a Question to Sensei
+              </button>
+            </div>
+          </div>
+        </div>
+
+        <!-- Curated Playlists / Topic Filter -->
+        <div class="playlist-filter-bar">
+          <button class="filter-tab active" data-filter="all">All Lessons</button>
+          <button class="filter-tab" data-filter="jft">JFT-Basic A2</button>
+          <button class="filter-tab" data-filter="jlpt">JLPT N5 / N4</button>
+          <button class="filter-tab" data-filter="kaigo">Kaigo (<ruby>介護<rt>かいご</rt></ruby> Caregiving)</button>
+          <button class="filter-tab" data-filter="ssw">SSW Industry & Visa</button>
+          <button class="filter-tab" data-filter="culture">Life in Japan</button>
+        </div>
+
+        <!-- Video Grid -->
+        <div class="video-grid" id="video-cards-grid">
+          <!-- Video Cards will be populated dynamically by app.js -->
+        </div>
+
+        <div class="center-cta-box">
+          <p>Want unlimited access to every single lesson, live doubt clearing, and exam updates?</p>
+          <a href="https://www.youtube.com/@KapilSensei?sub_confirmation=1" target="_blank" rel="noopener" class="btn btn-youtube btn-large">
+            <svg viewBox="0 0 24 24" width="22" height="22" fill="currentColor">
+              <path d="M23.498 6.186a3.016 3.016 0 0 0-2.122-2.136C19.505 3.545 12 3.545 12 3.545s-7.505 0-9.377.505A3.017 3.017 0 0 0 .502 6.186C0 8.07 0 12 0 12s0 3.93.502 5.814a3.016 3.016 0 0 0 2.122 2.136c1.871.505 9.376.505 9.376.505s7.505 0 9.377-.505a3.015 3.015 0 0 0 2.122-2.136C24 15.93 24 12 24 12s0-3.93-.502-5.814zM9.545 15.568V8.432L15.818 12l-6.273 3.568z"/>
+            </svg>
+            <span>Subscribe to @KapilSensei on YouTube</span>
+          </a>
+        </div>
+      </div>
+    </section>
+
+    <!-- SSW (特定技能 Specified Skilled Worker) Hub -->
+    <section class="section ssw-section topic-section" id="ssw-hub" data-topic-id="ssw-hub" data-topic-name="SSW Japan Career Hub" data-topic-kanji="特定技能">
+      <div class="container">
+        <div class="section-header">
+          <div class="section-eyebrow">CAREER PATHWAY IN JAPAN</div>
+          <h2 class="section-title">SSW Visa Preparation Hub <span class="kanji-badge"><ruby>特定技能<rt>とくていぎのう</rt></ruby></span></h2>
+          <p class="section-subtitle">
+            The Specified Skilled Worker (SSW 1 & 2) status allows foreign nationals to work in high-demand Japanese industries with full Japanese labor benefits and fair wages.
+          </p>
+        </div>
+
+        <!-- 4 Specialized SSW Sectors -->
+        <div class="ssw-grid">
+          <!-- Sector 1: Kaigo -->
+          <div class="ssw-card" data-sector="kaigo">
+            <div class="ssw-card-header">
+              <div class="ssw-icon-box">❤️</div>
+              <div class="ssw-badge">High Demand</div>
+            </div>
+            <div class="ssw-kanji-title"><ruby>介護<rt>かいご</rt></ruby> (Kaigo)</div>
+            <h3 class="ssw-card-title">Caregiving & Elderly Care</h3>
+            <p class="ssw-card-desc">
+              Assisting elderly residents with daily activities, rehabilitation, physical support, and nursing home care in modern Japanese geriatric facilities.
+            </p>
+            <div class="ssw-requirements-list">
+              <div class="req-item">✓ JFT-Basic A2 OR JLPT N4</div>
+              <div class="req-item">✓ Nursing Care Skills Evaluation Test</div>
+              <div class="req-item">✓ Nursing Care Japanese Language Test</div>
+            </div>
+            <div class="ssw-footer">
+              <span class="ssw-salary">Avg: ¥200,000 – ¥250,000/mo</span>
+              <button class="btn btn-outline-sm open-sector-modal" data-sector="kaigo">View Curriculum &rarr;</button>
+            </div>
+          </div>
+
+          <!-- Sector 2: Nogyo -->
+          <div class="ssw-card" data-sector="nogyo">
+            <div class="ssw-card-header">
+              <div class="ssw-icon-box">🌱</div>
+              <div class="ssw-badge">Fast Track</div>
+            </div>
+            <div class="ssw-kanji-title"><ruby>農業<rt>のうぎょう</rt></ruby> (Nōgyō)</div>
+            <h3 class="ssw-card-title">Agriculture & Farming</h3>
+            <p class="ssw-card-desc">
+              Modern greenhouse cultivation, fruit picking, vegetable sorting, hydroponic operations, and livestock husbandry across Japan's premier agricultural regions.
+            </p>
+            <div class="ssw-requirements-list">
+              <div class="req-item">✓ JFT-Basic A2 OR JLPT N4</div>
+              <div class="req-item">✓ General Crop Farming Skills Test</div>
+              <div class="req-item">✓ Livestock Farming Option</div>
+            </div>
+            <div class="ssw-footer">
+              <span class="ssw-salary">Avg: ¥190,000 – ¥240,000/mo</span>
+              <button class="btn btn-outline-sm open-sector-modal" data-sector="nogyo">View Curriculum &rarr;</button>
+            </div>
+          </div>
+
+          <!-- Sector 3: Gaisyoku -->
+          <div class="ssw-card" data-sector="gaisyoku">
+            <div class="ssw-card-header">
+              <div class="ssw-icon-box">🍽️</div>
+              <div class="ssw-badge">Popular</div>
+            </div>
+            <div class="ssw-kanji-title"><ruby>外食業<rt>がいしょくぎょう</rt></ruby> (Gaisyoku)</div>
+            <h3 class="ssw-card-title">Food Service & Restaurants</h3>
+            <p class="ssw-card-desc">
+              Customer service (Omotenashi), kitchen preparation, cooking, food hygiene management, and restaurant front operations in Japan's vibrant culinary sector.
+            </p>
+            <div class="ssw-requirements-list">
+              <div class="req-item">✓ JFT-Basic A2 OR JLPT N4</div>
+              <div class="req-item">✓ Food Service Skills Evaluation Test</div>
+              <div class="req-item">✓ Japanese Food Hygiene Certification</div>
+            </div>
+            <div class="ssw-footer">
+              <span class="ssw-salary">Avg: ¥200,000 – ¥260,000/mo</span>
+              <button class="btn btn-outline-sm open-sector-modal" data-sector="gaisyoku">View Curriculum &rarr;</button>
+            </div>
+          </div>
+
+          <!-- Sector 4: Shukuhaku -->
+          <div class="ssw-card" data-sector="shukuhaku">
+            <div class="ssw-card-header">
+              <div class="ssw-icon-box">🏨</div>
+              <div class="ssw-badge">Omotenashi</div>
+            </div>
+            <div class="ssw-kanji-title"><ruby>宿泊業<rt>しゅくはくぎょう</rt></ruby> (Shukuhaku)</div>
+            <h3 class="ssw-card-title">Hospitality & Hotel Operations</h3>
+            <p class="ssw-card-desc">
+              Front desk guest reception, concierge, planning, guest relations, and authentic Ryokan/resort service in Japan's world-renowned tourism industry.
+            </p>
+            <div class="ssw-requirements-list">
+              <div class="req-item">✓ JFT-Basic A2 OR JLPT N4</div>
+              <div class="req-item">✓ Accommodation Industry Skills Test</div>
+              <div class="req-item">✓ Spoken Keigo (Honorifics) Focus</div>
+            </div>
+            <div class="ssw-footer">
+              <span class="ssw-salary">Avg: ¥210,000 – ¥270,000/mo</span>
+              <button class="btn btn-outline-sm open-sector-modal" data-sector="shukuhaku">View Curriculum &rarr;</button>
+            </div>
+          </div>
+        </div>
+
+        <!-- SSW Step-by-Step Roadmap -->
+        <div class="ssw-roadmap-box">
+          <h3 class="roadmap-heading">Your 5-Step Roadmap to Japan with Kapil Sensei</h3>
+          <div class="roadmap-steps">
+            <div class="step-card">
+              <div class="step-number">01</div>
+              <h4>Learn Japanese Basics</h4>
+              <p>Master Hiragana, Katakana, and basic grammar (Minna no Nihongo 1–25) with Kapil Sensei's YouTube video lessons.</p>
+            </div>
+            <div class="step-card">
+              <div class="step-number">02</div>
+              <h4>Pass JFT-Basic or JLPT</h4>
+              <p>Achieve at least A2 level on the JFT-Basic or JLPT N4 exam with our targeted practice tests and mock simulations.</p>
+            </div>
+            <div class="step-card">
+              <div class="step-number">03</div>
+              <h4>Pass SSW Skills Test</h4>
+              <p>Clear the official Prometric Computer-Based Testing (CBT) for your chosen sector (Kaigo, Agri, Food, or Hotel).</p>
+            </div>
+            <div class="step-card">
+              <div class="step-number">04</div>
+              <h4>Employer Interview</h4>
+              <p>Prepare for Japanese employer interviews with Sensei’s interview etiquette, self-introduction (Jikoshoukai), and resume tips.</p>
+            </div>
+            <div class="step-card">
+              <div class="step-number">05</div>
+              <h4>COE & Visa Issuance</h4>
+              <p>Receive your Certificate of Eligibility (COE), SSW working visa, and fly to Japan to begin your prosperous career!</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Interactive Japanese Practice Lab (Audio & Flashcards) -->
+    <section class="section practice-section topic-section" id="practice-lab" data-topic-id="practice-lab" data-topic-name="Interactive Audio Flashcards" data-topic-kanji="単語帳・発音">
+      <div class="container">
+        <div class="section-header">
+          <div class="section-eyebrow">INTERACTIVE STUDY LAB</div>
+          <h2 class="section-title">Interactive Flashcards with <span class="gradient-text">Native Japanese Audio</span></h2>
+          <p class="section-subtitle">
+            Click the card to flip between Japanese and English. Press the audio button to hear native Japanese pronunciation!
+          </p>
+        </div>
+
+        <!-- Flashcard Category Selector -->
+        <div class="flashcard-deck-controls">
+          <div class="category-buttons">
+            <button class="deck-btn active" data-deck="n5_essential">JLPT N5 Core Words</button>
+            <button class="deck-btn" data-deck="kaigo_vocab">Kaigo (<ruby>介護<rt>かいご</rt></ruby>) Terms</button>
+            <button class="deck-btn" data-deck="agri_vocab">Agriculture (<ruby>農業<rt>のうぎょう</rt></ruby>) Terms</button>
+            <button class="deck-btn" data-deck="food_vocab">Food Service (<ruby>外食<rt>がいしょく</rt></ruby>) Terms</button>
+            <button class="deck-btn" data-deck="jft_phrases">Daily JFT-Basic Conversation</button>
+          </div>
+
+          <div class="deck-actions">
+            <button id="shuffle-card-btn" class="icon-text-btn" title="Shuffle flashcards">
+              🔀 Shuffle
+            </button>
+            <button id="audio-pronounce-btn" class="icon-text-btn btn-highlight" title="Listen to Japanese pronunciation">
+              🔊 Pronounce (<ruby>聞<rt>き</rt></ruby>いて)
+            </button>
+          </div>
+        </div>
+
+        <!-- 3D Flashcard Display Area -->
+        <div class="flashcard-stage">
+          <div class="flashcard-wrapper" id="flashcard" role="button" tabindex="0" aria-label="Interactive Japanese Flashcard. Press enter or space to flip.">
+            <!-- Front Face -->
+            <div class="card-face card-front">
+              <div class="card-tag" id="card-tag">JLPT N5 • VOCABULARY</div>
+              <div class="card-japanese-main" id="card-japanese"><ruby>先生<rt>せんせい</rt></ruby></div>
+              <div class="card-reading" id="card-reading">せんせい (Sensei)</div>
+              <div class="card-type-pill" id="card-type">Noun / <ruby>敬称<rt>けいしょう</rt></ruby></div>
+              <div class="card-flip-prompt">Click or tap to flip for English &amp; Example ↻</div>
+            </div>
+
+            <!-- Back Face -->
+            <div class="card-face card-back">
+              <div class="card-tag">ENGLISH MEANING &amp; CONTEXT</div>
+              <div class="card-meaning-main" id="card-meaning">Teacher / Master / Doctor</div>
+              <div class="card-example-box">
+                <div class="example-jp" id="card-example-jp">カピル<ruby>先生<rt>せんせい</rt></ruby>は<ruby>親切<rt>しんせつ</rt></ruby>な<ruby>先生<rt>せんせい</rt></ruby>です。</div>
+                <div class="example-romaji" id="card-example-romaji">Kapiru sensei wa shinsetsu na sensei desu.</div>
+                <div class="example-en" id="card-example-en">Kapil Sensei is a kind teacher.</div>
+              </div>
+              <div class="card-flip-prompt">Click again to return to Japanese ↻</div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Flashcard Navigation Controls -->
+        <div class="card-nav-controls">
+          <button id="prev-card-btn" class="btn btn-secondary">
+            &larr; Previous Card
+          </button>
+          <div class="card-counter" id="card-counter">
+            Card <strong>1</strong> of <strong>10</strong>
+          </div>
+          <button id="next-card-btn" class="btn btn-primary">
+            Next Card &rarr;
+          </button>
+        </div>
+      </div>
+    </section>
+
+    <!-- Interactive JFT-Basic & JLPT Quiz Arena -->
+    <section class="section quiz-section topic-section" id="quiz-hub" data-topic-id="quiz-hub" data-topic-name="JFT &amp; JLPT Practice Quiz Arena" data-topic-kanji="模擬試験">
+      <div class="container">
+        <div class="section-header">
+          <div class="section-eyebrow">TEST YOUR SKILLS</div>
+          <h2 class="section-title">JFT-Basic &amp; JLPT <span class="gradient-text">Practice Arena</span></h2>
+          <p class="section-subtitle">
+            Simulate real Japanese exam questions with instant scoring, timer feedback, and in-depth explanations.
+          </p>
+        </div>
+
+        <div class="quiz-container-box">
+          <div class="quiz-header">
+            <div class="quiz-progress-text">Question <span id="quiz-current-q">1</span> of <span id="quiz-total-q">5</span></div>
+            <div class="quiz-timer" id="quiz-timer">⏱️ 00:45</div>
+            <div class="quiz-score-badge">Score: <span id="quiz-score">0</span> pts</div>
+          </div>
+
+          <div class="quiz-question-box">
+            <div class="quiz-question-title" id="quiz-question-text">
+              Loading practice question...
+            </div>
+            <div class="quiz-question-sub" id="quiz-question-sub">
+              Choose the correct particle or vocabulary to complete the sentence.
+            </div>
+          </div>
+
+          <div class="quiz-options-list" id="quiz-options">
+            <!-- Options dynamically generated by app.js -->
+          </div>
+
+          <div class="quiz-explanation-box" id="quiz-explanation">
+            <!-- Explanation revealed upon answer -->
+          </div>
+
+          <div class="quiz-footer-actions">
+            <button id="quiz-next-btn" class="btn btn-primary" disabled>
+              Next Question &rarr;
+            </button>
+            <button id="quiz-restart-btn" class="btn btn-glass" style="display: none;">
+              Restart Quiz 🔄
+            </button>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Structured Course Catalog -->
+    <section class="section topic-section" id="courses" data-topic-id="courses" data-topic-name="Structured Study Programs" data-topic-kanji="講座一覧">
+      <div class="container">
+        <div class="section-header">
+          <div class="section-eyebrow">ACADEMIC EXCELLENCE</div>
+          <h2 class="section-title">Structured Study Programs</h2>
+          <p class="section-subtitle">
+            Whether you are starting from zero or targeting an SSW employment contract, Kapil Sensei has the right course track for you.
+          </p>
+        </div>
+
+        <div class="courses-grid">
+          <!-- Course 1 -->
+          <div class="course-card">
+            <div class="course-level-badge">LEVEL: ZERO TO N5</div>
+            <h3 class="course-title">Japanese Starter Bootcamp</h3>
+            <p class="course-desc">Master Hiragana, Katakana, basic vocabulary, greetings, numbers, and basic sentence construction.</p>
+            <ul class="course-features">
+              <li>✓ All 46 Hiragana & 46 Katakana with stroke order</li>
+              <li>✓ 800+ Core Daily Words & 100 Kanji</li>
+              <li>✓ Basic conversation & Self Introduction (Jikoshoukai)</li>
+              <li>✓ Complete YouTube Video Companion</li>
+            </ul>
+            <div class="course-footer">
+              <span class="course-price">Free on YouTube</span>
+              <a href="https://www.youtube.com/@KapilSensei" target="_blank" class="btn btn-outline-sm">Start Watching</a>
+            </div>
+          </div>
+
+          <!-- Course 2 -->
+          <div class="course-card featured-course">
+            <div class="popular-ribbon">MOST POPULAR</div>
+            <div class="course-level-badge">LEVEL: A2 (JFT-BASIC / N4)</div>
+            <h3 class="course-title">JFT-Basic & SSW Fast-Track</h3>
+            <p class="course-desc">Targeted curriculum specifically designed to pass the Japan Foundation Test for Basic Japanese (JFT-Basic) on your first attempt.</p>
+            <ul class="course-features">
+              <li>✓ Real exam format listening & reading drills</li>
+              <li>✓ Can-do statements practice based on JF Standard</li>
+              <li>✓ SSW Skills Test technical vocabulary</li>
+              <li>✓ Mock computer-based test practice & model papers</li>
+            </ul>
+            <div class="course-footer">
+              <span class="course-price">Free + Mentorship</span>
+              <button class="btn btn-primary btn-sm open-consultation-btn">Enroll / Inquire</button>
+            </div>
+          </div>
+
+          <!-- Course 3 -->
+          <div class="course-card">
+            <div class="course-level-badge">LEVEL: INTERMEDIATE N3</div>
+            <h3 class="course-title">Business & SSW-2 Career Bridge</h3>
+            <p class="course-desc">Advance your career in Japan toward permanent residency eligibility with intermediate Japanese and professional Keigo.</p>
+            <ul class="course-features">
+              <li>✓ Intermediate grammar patterns & Kanji mastery (350+ Kanji)</li>
+              <li>✓ Business email writing and telephone etiquette</li>
+              <li>✓ Natural spoken Japanese and listening speed drills</li>
+              <li>✓ SSW-2 skill upgrade exam coaching</li>
+            </ul>
+            <div class="course-footer">
+              <span class="course-price">Special Batch</span>
+              <button class="btn btn-outline-sm open-consultation-btn">Get Details</button>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- About Kapil Sensei Section -->
+    <section class="section about-section topic-section" id="about" data-topic-id="about" data-topic-name="About Kapil Sensei" data-topic-kanji="講師紹介">
+      <div class="container">
+        <div class="about-grid">
+          <div class="about-image-column">
+            <div class="sensei-profile-frame">
+              <img src="assets/logo.png" alt="Kapil Sensei Official Emblem" class="sensei-profile-img">
+              <div class="sensei-badge-seal">
+                <span>公式</span>
+                <span>認証</span>
+              </div>
+            </div>
+            <div class="sensei-quote-card">
+              <p>"Your journey to Japan is not just about memorizing words; it's about opening doors to a world of opportunity, dignity, and career fulfillment."</p>
+              <div class="quote-author">— Kapil Sensei (Kapil Giri)</div>
+            </div>
+          </div>
+
+          <div class="about-text-column">
+            <div class="section-eyebrow">MEET YOUR SENSEI</div>
+            <h2 class="section-title">Dedicated to Your Success in Japan</h2>
+            <p class="about-paragraph">
+              Welcome! I am <strong>Kapil Giri (Kapil Sensei)</strong>. Over years of intensive teaching, mentoring, and working closely with Japanese educational standards and SSW organizations, I have seen first-hand the challenges international learners face when preparing for Japan.
+            </p>
+            <p class="about-paragraph">
+              My mission with the <strong>Kapil Sensei</strong> channel and platform is simple: provide honest, high-quality, practical, and accessible Japanese instruction that equips you with both language proficiency and real-world employment readiness.
+            </p>
+
+            <div class="sensei-pillars">
+              <div class="pillar-item">
+                <div class="pillar-icon">🎯</div>
+                <div>
+                  <h4>Result-Oriented Pedagogy</h4>
+                  <p>Focused on what really matters in the exam and in Japanese workplace communication.</p>
+                </div>
+              </div>
+              <div class="pillar-item">
+                <div class="pillar-icon">💼</div>
+                <div>
+                  <h4>Official SSW Guidelines</h4>
+                  <p>Accurate knowledge about Japanese immigration laws, certified testing bodies, and job contracts.</p>
+                </div>
+              </div>
+              <div class="pillar-item">
+                <div class="pillar-icon">🤝</div>
+                <div>
+                  <h4>Supportive Student Community</h4>
+                  <p>Prompt answers to your doubts on YouTube comments, Telegram, and consultation sessions.</p>
+                </div>
+              </div>
+            </div>
+
+            <div class="about-cta-row">
+              <a href="https://www.youtube.com/@KapilSensei?sub_confirmation=1" target="_blank" rel="noopener" class="btn btn-youtube">
+                Join our YouTube Family
+              </a>
+              <button class="btn btn-secondary open-consultation-btn">
+                Book 1-on-1 Advice
+              </button>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- FAQ Section -->
+    <section class="section faq-section topic-section" id="faq" data-topic-id="faq" data-topic-name="Frequently Asked Questions (FAQ)" data-topic-kanji="よくある質問">
+      <div class="container">
+        <div class="section-header">
+          <div class="section-eyebrow">COMMON QUESTIONS</div>
+          <h2 class="section-title">Frequently Asked Questions</h2>
+          <p class="section-subtitle">Everything you need to know about learning Japanese and working in Japan through SSW.</p>
+        </div>
+
+        <div class="faq-accordion" id="faq-accordion">
+          <div class="faq-item">
+            <button class="faq-question">
+              <span>What is the difference between JFT-Basic and JLPT N4 for SSW visa?</span>
+              <span class="faq-icon">+</span>
+            </button>
+            <div class="faq-answer">
+              <p>Both JFT-Basic (A2 level) and JLPT N4 are officially recognized by Japan's Immigration Services Agency for the SSW (Specified Skilled Worker) visa. The major difference is that JFT-Basic is computer-based (CBT) and held multiple times throughout the year with quick result announcements, whereas JLPT is a paper-and-pencil test held only twice a year (July and December).</p>
+            </div>
+          </div>
+
+          <div class="faq-item">
+            <button class="faq-question">
+              <span>How long does it take to reach JFT-Basic / JLPT N4 level?</span>
+              <span class="faq-icon">+</span>
+            </button>
+            <div class="faq-answer">
+              <p>With consistent daily study of 2–3 hours following Kapil Sensei’s video lessons, most motivated students successfully pass within 4 to 6 months from zero.</p>
+            </div>
+          </div>
+
+          <div class="faq-item">
+            <button class="faq-question">
+              <span>Which SSW sector is easiest or has the highest demand?</span>
+              <span class="faq-icon">+</span>
+            </button>
+            <div class="faq-answer">
+              <p><strong>Kaigo (Caregiving)</strong> has consistently high quota demands and excellent long-term career support with potential transitions to Kaigo certified care worker visa. <strong>Food Service (Gaisyoku)</strong> and <strong>Agriculture (Nōgyō)</strong> also offer straightforward skills test syllabi.</p>
+            </div>
+          </div>
+
+          <div class="faq-item">
+            <button class="faq-question">
+              <span>Are Kapil Sensei's YouTube lectures free?</span>
+              <span class="faq-icon">+</span>
+            </button>
+            <div class="faq-answer">
+              <p>Yes! All published YouTube lessons on the Kapil Sensei channel are 100% free for everyone. You can support the channel by subscribing, liking, and sharing with friends aiming for Japan.</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <!-- Video Modal Player -->
+  <div class="modal-backdrop" id="video-modal">
+    <div class="modal-dialog modal-video-dialog">
+      <div class="modal-header">
+        <h3 id="video-modal-title">Kapil Sensei Lesson Player</h3>
+        <button class="modal-close-btn" id="close-video-modal" aria-label="Close video player">&times;</button>
+      </div>
+      <div class="modal-body modal-video-body">
+        <div class="modal-iframe-wrapper">
+          <iframe id="modal-iframe" src="" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Sector Details Modal -->
+  <div class="modal-backdrop" id="sector-modal">
+    <div class="modal-dialog">
+      <div class="modal-header">
+        <h3 id="sector-modal-title">SSW Sector Details</h3>
+        <button class="modal-close-btn" id="close-sector-modal" aria-label="Close modal">&times;</button>
+      </div>
+      <div class="modal-body" id="sector-modal-content">
+        <!-- Injected by app.js -->
+      </div>
+      <div class="modal-footer">
+        <button class="btn btn-secondary" id="sector-close-btn">Close</button>
+        <button class="btn btn-primary open-consultation-btn">Inquire for this Sector</button>
+      </div>
+    </div>
+  </div>
+
+  <!-- Consultation & Enrollment Modal -->
+  <div class="modal-backdrop" id="consultation-modal">
+    <div class="modal-dialog">
+      <div class="modal-header">
+        <h3>Book Free Counseling with Kapil Sensei</h3>
+        <button class="modal-close-btn" id="close-consult-modal" aria-label="Close modal">&times;</button>
+      </div>
+      <div class="modal-body">
+        <p class="modal-sub">Need guidance on your Japanese study plan, JFT exam date, or SSW visa requirements? Send your inquiry directly.</p>
+        <form id="consultation-form">
+          <div class="form-group">
+            <label for="consult-name">Full Name *</label>
+            <input type="text" id="consult-name" placeholder="e.g. Ramesh Thapa" required />
+          </div>
+          <div class="form-group">
+            <label for="consult-email">Email Address *</label>
+            <input type="email" id="consult-email" placeholder="e.g. name@example.com" required />
+          </div>
+          <div class="form-group">
+            <label for="consult-phone">WhatsApp / Phone Number *</label>
+            <input type="tel" id="consult-phone" placeholder="e.g. +977 98XXXXXXXX" required />
+          </div>
+          <div class="form-group">
+            <label for="consult-goal">Target Goal / Interest *</label>
+            <select id="consult-goal" required>
+              <option value="">Select your goal...</option>
+              <option value="jft">JFT-Basic A2 Exam Prep</option>
+              <option value="jlpt_n5_n4">JLPT N5 / N4 Certification</option>
+              <option value="ssw_kaigo">SSW 1: Kaigo (Caregiving)</option>
+              <option value="ssw_agri">SSW 1: Agriculture (農業)</option>
+              <option value="ssw_food">SSW 1: Food Service (外食業)</option>
+              <option value="ssw_hotel">SSW 1: Hospitality (宿泊業)</option>
+              <option value="general">General Japanese Study Advice</option>
+            </select>
+          </div>
+          <div class="form-group">
+            <label for="consult-message">Your Message or Questions</label>
+            <textarea id="consult-message" rows="3" placeholder="Tell Sensei about your current Japanese level and plans..."></textarea>
+          </div>
+          <button type="submit" class="btn btn-primary btn-block">Submit Inquiry</button>
+        </form>
+        <div id="consult-success-message" class="form-success-alert" style="display: none;">
+          🎉 <strong>Arigatou gozaimasu!</strong> Your inquiry has been submitted. Kapil Sensei will get back to you shortly via WhatsApp or Email. In the meantime, don't forget to check our latest YouTube lessons!
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Toast Notification -->
+  <div id="toast" class="toast"></div>
+
+  <!-- Footer -->
+  <footer class="footer">
+    <div class="container footer-container">
+      <div class="footer-col brand-col">
+        <div class="footer-logo">
+          <img src="assets/logo.png" alt="Kapil Sensei Official Logo" class="footer-avatar">
+          <div>
+            <span class="footer-brand-title">KAPIL SENSEI</span>
+            <span class="footer-brand-sub">カピル<ruby>先生<rt>せんせい</rt></ruby> • <ruby>一緒<rt>いっしょ</rt></ruby>に<ruby>頑張<rt>がんば</rt></ruby>りましょう</span>
+          </div>
+        </div>
+        <p class="footer-tagline">
+          Empowering ambitious learners to master Japanese, pass JFT-Basic & JLPT exams, and build rewarding careers in Japan under the SSW program.
+        </p>
+        <div class="footer-social-row">
+          <a href="https://www.youtube.com/@KapilSensei" target="_blank" rel="noopener" class="social-icon" aria-label="YouTube Channel">
+            <svg viewBox="0 0 24 24" width="20" height="20" fill="currentColor">
+              <path d="M23.498 6.186a3.016 3.016 0 0 0-2.122-2.136C19.505 3.545 12 3.545 12 3.545s-7.505 0-9.377.505A3.017 3.017 0 0 0 .502 6.186C0 8.07 0 12 0 12s0 3.93.502 5.814a3.016 3.016 0 0 0 2.122 2.136c1.871.505 9.376.505 9.376.505s7.505 0 9.377-.505a3.015 3.015 0 0 0 2.122-2.136C24 15.93 24 12 24 12s0-3.93-.502-5.814zM9.545 15.568V8.432L15.818 12l-6.273 3.568z"/>
+            </svg>
+          </a>
+          <a href="https://www.facebook.com" target="_blank" rel="noopener" class="social-icon" aria-label="Facebook">
+            <svg viewBox="0 0 24 24" width="20" height="20" fill="currentColor">
+              <path d="M24 12.073c0-6.627-5.373-12-12-12s-12 5.373-12 12c0 5.99 4.388 10.954 10.125 11.854v-8.385H7.078v-3.47h3.047V9.43c0-3.007 1.792-4.669 4.533-4.669 1.312 0 2.686.235 2.686.235v2.953H15.83c-1.491 0-1.956.925-1.956 1.874v2.25h3.328l-.532 3.47h-2.796v8.385C19.612 23.027 24 18.062 24 12.073z"/>
+            </svg>
+          </a>
+          <a href="https://telegram.org" target="_blank" rel="noopener" class="social-icon" aria-label="Telegram Community">
+            <svg viewBox="0 0 24 24" width="20" height="20" fill="currentColor">
+              <path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm4.64 6.8c-.15 1.58-.8 5.42-1.13 7.19-.14.75-.42 1-.68 1.03-.58.05-1.02-.38-1.58-.75-.88-.58-1.38-.94-2.23-1.5-.99-.65-.35-1.01.22-1.59.15-.15 2.71-2.48 2.76-2.69a.2.2 0 0 0-.05-.18c-.06-.05-.14-.03-.21-.02-.09.02-1.49.95-4.22 2.79-.4.27-.76.41-1.08.4-.36-.01-1.04-.2-1.55-.37-.63-.2-1.12-.31-1.08-.66.02-.18.27-.36.75-.55 2.92-1.27 4.86-2.11 5.83-2.51 2.78-1.16 3.35-1.36 3.73-1.36.08 0 .27.02.39.12.1.08.13.19.14.27-.01.06.01.24 0 .38z"/>
+            </svg>
+          </a>
+        </div>
+      </div>
+
+      <div class="footer-col">
+        <h4 class="footer-heading">Quick Links</h4>
+        <ul class="footer-links">
+          <li><a href="#featured-video">Featured Lessons</a></li>
+          <li><a href="#gallery">🖼️ Japan Gallery & Classroom</a></li>
+          <li><a href="#ssw-hub">SSW Visa Hub</a></li>
+          <li><a href="#practice-lab">Audio Flashcards</a></li>
+          <li><a href="#quiz-hub">JFT-Basic Mock Quiz</a></li>
+          <li><a href="#courses">Courses &amp; Syllabus</a></li>
+          <li><a href="#about">About Kapil Sensei</a></li>
+        </ul>
+      </div>
+
+      <div class="footer-col">
+        <h4 class="footer-heading">SSW Focus Areas</h4>
+        <ul class="footer-links">
+          <li><a href="#ssw-hub"><ruby>介護<rt>かいご</rt></ruby> (Kaigo - Caregiving)</a></li>
+          <li><a href="#ssw-hub"><ruby>農業<rt>のうぎょう</rt></ruby> (Nōgyō - Agriculture)</a></li>
+          <li><a href="#ssw-hub"><ruby>外食業<rt>がいしょくぎょう</rt></ruby> (Gaisyoku - Food Service)</a></li>
+          <li><a href="#ssw-hub"><ruby>宿泊業<rt>しゅくはくぎょう</rt></ruby> (Shukuhaku - Hospitality)</a></li>
+          <li><a href="#ssw-hub">JFT-Basic A2 Can-Do</a></li>
+          <li><a href="#ssw-hub">COE &amp; Visa Roadmap</a></li>
+        </ul>
+      </div>
+
+      <div class="footer-col">
+        <h4 class="footer-heading">Channel &amp; Support</h4>
+        <p class="footer-info-text">Subscribe on YouTube for daily lesson uploads, Kanji drills, and SSW announcements.</p>
+        <a href="https://www.youtube.com/@KapilSensei?sub_confirmation=1" target="_blank" rel="noopener" class="btn btn-youtube btn-block">
+          Subscribe to Channel
+        </a>
+      </div>
+    </div>
+
+    <div class="footer-bottom">
+      <div class="container footer-bottom-container">
+        <p>&copy; 2026 Kapil Sensei (Kapil Giri). All rights reserved. <ruby>日本語<rt>にほんご</rt></ruby>を<ruby>楽<rt>たの</rt></ruby>しく<ruby>学<rt>まな</rt></ruby>ぼう！</p>
+        <p class="footer-built">Designed with 🌸 for Japan Aspirants Worldwide</p>
+      </div>
+    </div>
+  </footer>
+
+  <!-- Floating Back to Top Button -->
+  <button id="back-to-top" class="back-to-top" aria-label="Scroll back to top" title="Scroll to top">
+    <svg viewBox="0 0 24 24" width="22" height="22" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+      <path d="M18 15l-6-6-6 6"/>
+    </svg>
+  </button>
+
+  <script src="app.js"></script>
+</body>
+</html>
