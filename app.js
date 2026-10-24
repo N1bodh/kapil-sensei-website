@@ -1830,6 +1830,7 @@ function initStudentAuth() {
       const phoneInput = document.getElementById('signup-phone');
       const pwdInput = document.getElementById('signup-password');
       const goalInput = document.getElementById('signup-goal');
+      const policyAgree = document.getElementById('signup-policy-agree');
 
       const nameError = document.getElementById('signup-name-error');
       const emailError = document.getElementById('signup-email-error');
@@ -1896,6 +1897,13 @@ function initStudentAuth() {
       } else {
         if (pwdError) pwdError.classList.remove('active');
         pwdInput.classList.remove('input-invalid');
+      }
+
+      // Validate Terms & Conditions + Privacy Policy acceptance
+      if (policyAgree && !policyAgree.checked) {
+        showToast('⚠️ Please agree to the Terms & Conditions and Privacy Policy to register.');
+        policyAgree.focus();
+        hasError = true;
       }
 
       if (hasError) return;

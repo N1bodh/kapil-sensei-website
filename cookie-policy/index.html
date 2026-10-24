@@ -1,0 +1,243 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Cookie &amp; Technology Notice — Kapil Sensei | Japanese Language Education</title>
+  <meta name="description" content="Cookie and Website Technology Notice for Kapil Sensei. Information about how cookies, localStorage, YouTube embeds and Cloudflare hosting work on this site." />
+  <link rel="icon" href="../assets/logo.png" type="image/png" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Outfit:wght@400;600;700&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="../style.css" />
+  <style>
+    .policy-hero { background: linear-gradient(135deg, var(--bg-secondary) 0%, var(--bg-primary) 100%); border-bottom: 1px solid var(--border-color); padding: 3rem 0 2.5rem; }
+    .policy-breadcrumb { display: flex; align-items: center; gap: 0.5rem; font-size: 0.82rem; color: var(--text-muted); margin-bottom: 1.25rem; }
+    .policy-breadcrumb a { color: var(--accent-primary); text-decoration: none; }
+    .policy-badge { display: inline-flex; align-items: center; gap: 0.4rem; background: rgba(16,185,129,0.12); border: 1px solid rgba(16,185,129,0.3); color: #34d399; font-size: 0.72rem; font-weight: 700; letter-spacing: 0.08em; text-transform: uppercase; padding: 0.3rem 0.75rem; border-radius: 999px; margin-bottom: 1rem; }
+    .policy-title { font-family: 'Outfit', sans-serif; font-size: clamp(1.75rem, 4vw, 2.5rem); font-weight: 700; color: var(--text-primary); margin: 0 0 0.75rem; }
+    .policy-meta-row { display: flex; flex-wrap: wrap; gap: 1.25rem; margin-top: 1rem; }
+    .policy-meta-item { display: flex; align-items: center; gap: 0.4rem; font-size: 0.85rem; color: var(--text-secondary); }
+    .policy-meta-item strong { color: var(--text-primary); font-weight: 600; }
+    .policy-layout { display: grid; grid-template-columns: 240px 1fr; gap: 2.5rem; padding: 3rem 0 4rem; align-items: start; }
+    @media (max-width: 768px) { .policy-layout { grid-template-columns: 1fr; } .policy-toc { display: none; } }
+    .policy-toc { position: sticky; top: 90px; background: var(--bg-secondary); border: 1px solid var(--border-color); border-radius: 12px; padding: 1.25rem; }
+    .policy-toc h4 { font-size: 0.78rem; font-weight: 700; letter-spacing: 0.08em; text-transform: uppercase; color: var(--text-muted); margin: 0 0 1rem; }
+    .policy-toc-list { list-style: none; padding: 0; margin: 0; }
+    .policy-toc-list li { margin-bottom: 0.3rem; }
+    .policy-toc-list a { display: block; font-size: 0.82rem; color: var(--text-secondary); text-decoration: none; padding: 0.3rem 0.5rem; border-radius: 6px; transition: background 0.2s, color 0.2s; }
+    .policy-toc-list a:hover { background: rgba(16,185,129,0.1); color: #34d399; }
+    .policy-article h2 { font-family: 'Outfit', sans-serif; font-size: 1.35rem; font-weight: 700; color: var(--text-primary); margin: 2.5rem 0 0.75rem; padding-top: 0.5rem; border-top: 1px solid var(--border-color); }
+    .policy-article h2:first-of-type { margin-top: 0; border-top: none; padding-top: 0; }
+    .policy-article h3 { font-size: 1.05rem; font-weight: 600; color: var(--text-primary); margin: 1.5rem 0 0.5rem; }
+    .policy-article p { color: var(--text-secondary); line-height: 1.8; margin-bottom: 1rem; font-size: 0.93rem; }
+    .policy-article ul { color: var(--text-secondary); line-height: 1.8; font-size: 0.93rem; padding-left: 1.5rem; margin-bottom: 1rem; }
+    .policy-article li { margin-bottom: 0.35rem; }
+    .policy-article a { color: var(--accent-primary); text-decoration: none; }
+    .policy-article a:hover { text-decoration: underline; }
+    .policy-notice-box { background: rgba(16,185,129,0.07); border: 1px solid rgba(16,185,129,0.25); border-radius: 10px; padding: 1rem 1.25rem; margin: 0 0 2rem; }
+    .policy-notice-box p { margin: 0.3rem 0; font-size: 0.88rem; color: var(--text-secondary); }
+    .policy-contact-card { background: var(--bg-secondary); border: 1px solid var(--border-color); border-radius: 12px; padding: 1.5rem; margin-top: 2.5rem; }
+    .policy-contact-card h3 { margin-top: 0; }
+    .policy-contact-card p { margin-bottom: 0.4rem; }
+    .tech-card { background: var(--bg-secondary); border: 1px solid var(--border-color); border-radius: 10px; padding: 1rem 1.25rem; margin: 0.75rem 0; }
+    .tech-card-header { display: flex; align-items: center; gap: 0.6rem; font-weight: 600; color: var(--text-primary); margin-bottom: 0.5rem; font-size: 0.95rem; }
+    .tech-card p { margin: 0; font-size: 0.88rem; color: var(--text-secondary); line-height: 1.7; }
+    .tech-type-badge { display: inline-block; font-size: 0.68rem; font-weight: 700; padding: 0.15rem 0.55rem; border-radius: 999px; margin-left: auto; text-transform: uppercase; letter-spacing: 0.06em; }
+    .badge-first-party { background: rgba(16,185,129,0.15); color: #34d399; border: 1px solid rgba(16,185,129,0.3); }
+    .badge-third-party { background: rgba(245,158,11,0.15); color: #fbbf24; border: 1px solid rgba(245,158,11,0.3); }
+    .badge-essential { background: rgba(139,92,246,0.15); color: #a78bfa; border: 1px solid rgba(139,92,246,0.3); }
+  </style>
+</head>
+<body class="dark-mode">
+  <header class="navbar" id="navbar" role="banner">
+    <div class="container nav-container">
+      <a href="../" class="nav-logo" aria-label="Kapil Sensei Homepage">
+        <img src="../assets/logo.png" alt="Kapil Sensei Logo" class="nav-logo-img" />
+        <div class="nav-logo-text">
+          <span class="nav-brand">KAPIL SENSEI</span>
+          <span class="nav-brand-sub">カピル先生</span>
+        </div>
+      </a>
+      <nav class="nav-links" aria-label="Main navigation">
+        <a href="../#courses" class="nav-link">Courses</a>
+        <a href="../#faq" class="nav-link">FAQ</a>
+        <a href="../" class="btn btn-primary nav-cta">← Back to Home</a>
+      </nav>
+    </div>
+  </header>
+
+  <main id="main-content">
+    <div class="policy-hero">
+      <div class="container">
+        <nav class="policy-breadcrumb" aria-label="Breadcrumb">
+          <a href="../">Home</a>
+          <span>›</span>
+          <span>Cookie &amp; Technology Notice</span>
+        </nav>
+        <div class="policy-badge">🍪 Technology Notice</div>
+        <h1 class="policy-title">Cookie and Website Technology Notice</h1>
+        <div class="policy-meta-row">
+          <div class="policy-meta-item">📅 <strong>Last updated:</strong> 24 October 2026</div>
+          <div class="policy-meta-item">📋 <strong>Version:</strong> 1.0</div>
+          <div class="policy-meta-item">🛡️ <strong>Privacy-first:</strong> No first-party tracking</div>
+        </div>
+      </div>
+    </div>
+
+    <div class="container">
+      <div class="policy-layout">
+        <aside class="policy-toc" aria-label="Table of Contents">
+          <h4>On This Page</h4>
+          <ul class="policy-toc-list">
+            <li><a href="#what-cookies">4.1 What Are Cookies?</a></li>
+            <li><a href="#our-cookies">4.2 Our Cookie Usage</a></li>
+            <li><a href="#localStorage">4.3 Browser localStorage</a></li>
+            <li><a href="#cloudflare">4.4 Cloudflare Hosting</a></li>
+            <li><a href="#youtube">4.5 YouTube Embeds</a></li>
+            <li><a href="#google-fonts">4.6 Google Fonts</a></li>
+            <li><a href="#analytics">4.7 Analytics</a></li>
+            <li><a href="#browser-controls">4.8 Your Browser Controls</a></li>
+            <li><a href="#updates-ck">4.9 Updates</a></li>
+            <li><a href="#contact-ck">4.10 Contact</a></li>
+          </ul>
+        </aside>
+
+        <article class="policy-article">
+          <div class="policy-notice-box">
+            <p>✅ <strong>Kapil Sensei does not set its own first-party tracking cookies.</strong></p>
+            <p>However, third-party services embedded in this website (YouTube, Cloudflare, Google Fonts) may set their own cookies or process technical data. This notice explains each.</p>
+          </div>
+
+          <h2 id="what-cookies">4.1 What Are Cookies?</h2>
+          <p>Cookies are small text files that websites may store on your device. They help websites remember your preferences, maintain sessions, and count visits.</p>
+          <p>Some cookies are essential for a website to function correctly. Others are used for analytics, advertising or personalisation and are set by third-party services embedded in a website.</p>
+          <p>Browser-based storage technologies (such as localStorage) work in a similar way to cookies but remain on your device and are not automatically sent to a server with each request.</p>
+
+          <h2 id="our-cookies">4.2 Our Own Cookie Usage</h2>
+          <p>Kapil Sensei does not currently set its own first-party tracking cookies.</p>
+          <p>If a cookie-based session or preference feature is introduced in the future, this notice will be updated to explain its purpose, duration and the choices available.</p>
+
+          <h2 id="localStorage">4.3 Browser localStorage (Student Account Data)</h2>
+          <div class="tech-card">
+            <div class="tech-card-header">
+              🗂️ Browser localStorage
+              <span class="tech-type-badge badge-first-party">First-Party · Device Only</span>
+            </div>
+            <p>Student account information (name, email, goal preference) entered on this website is stored in your browser's localStorage. This data is saved only on your device and is not transmitted to our servers. You can view, edit or delete it through your browser's developer tools or by clearing your browser storage. localStorage data persists until you clear it or uninstall the browser.</p>
+          </div>
+          <div class="tech-card" style="margin-top: 0.75rem;">
+            <div class="tech-card-header">
+              🎨 Theme Preference
+              <span class="tech-type-badge badge-first-party">First-Party · Device Only</span>
+            </div>
+            <p>Your chosen display theme (dark or light mode) may be saved in localStorage so the site remembers your preference on future visits. This data stays on your device only.</p>
+          </div>
+
+          <h2 id="cloudflare">4.4 Cloudflare (Website Hosting)</h2>
+          <div class="tech-card">
+            <div class="tech-card-header">
+              🛡️ Cloudflare Workers &amp; CDN
+              <span class="tech-type-badge badge-essential">Infrastructure</span>
+            </div>
+            <p>This website is hosted on Cloudflare Workers. Cloudflare may process technical information (including IP addresses and device data) to deliver and protect the website. Cloudflare may set a security cookie (typically <code>__cf_bm</code>) for bot detection and DDoS protection. This is a functional security measure. For details, see <a href="https://www.cloudflare.com/privacypolicy/" target="_blank" rel="noopener">Cloudflare's Privacy Policy</a>.</p>
+          </div>
+
+          <h2 id="youtube">4.5 YouTube Video Embeds</h2>
+          <div class="tech-card">
+            <div class="tech-card-header">
+              ▶️ YouTube (Google LLC)
+              <span class="tech-type-badge badge-third-party">Third-Party</span>
+            </div>
+            <p>Our website includes embedded YouTube videos for Japanese-language lessons. When a YouTube video is played (or in some cases, when the page loads), YouTube may set cookies on your device and collect technical data in accordance with Google's terms and privacy policy.</p>
+            <p style="margin-top: 0.5rem;">YouTube cookies may be used for:</p>
+            <ul>
+              <li>Tracking video plays and user engagement.</li>
+              <li>Serving personalised or contextual advertising (on YouTube's platforms).</li>
+              <li>Maintaining session state while watching videos.</li>
+            </ul>
+            <p>You can manage YouTube / Google cookies through your Google account settings or by using your browser's cookie controls. See <a href="https://policies.google.com/privacy" target="_blank" rel="noopener">Google's Privacy Policy</a> for details.</p>
+          </div>
+
+          <h2 id="google-fonts">4.6 Google Fonts</h2>
+          <div class="tech-card">
+            <div class="tech-card-header">
+              🔤 Google Fonts
+              <span class="tech-type-badge badge-third-party">Third-Party · CDN</span>
+            </div>
+            <p>This website loads fonts (Inter, Outfit) from Google Fonts CDN to display clean, modern typography. Google may process your IP address and browser information when fonts are loaded. Google states it does not use font requests for advertising purposes. See <a href="https://developers.google.com/fonts/faq/privacy" target="_blank" rel="noopener">Google Fonts Privacy FAQ</a> for details.</p>
+          </div>
+
+          <h2 id="analytics">4.7 Analytics and Tracking</h2>
+          <p>This website does not currently use Google Analytics, Facebook Pixel, or other analytics tracking services.</p>
+          <p>If analytics tools are added in the future, this notice will be updated to describe the provider, purpose, data collected and how to opt out.</p>
+
+          <h2 id="browser-controls">4.8 Your Browser Controls</h2>
+          <p>You can manage cookie and storage preferences through your browser settings. Options typically include:</p>
+          <ul>
+            <li><strong>View cookies:</strong> See which cookies are set for a page.</li>
+            <li><strong>Delete cookies:</strong> Remove existing cookies from your device.</li>
+            <li><strong>Block third-party cookies:</strong> Prevent advertising and tracking cookies from third-party domains.</li>
+            <li><strong>Clear localStorage:</strong> Remove locally stored data from your browser.</li>
+            <li><strong>Private / incognito mode:</strong> Browse without saving cookies or local storage across sessions.</li>
+          </ul>
+          <p>Blocking certain cookies may affect the functionality of embedded YouTube videos or third-party services on this website. Our own website features (localStorage-based) will remain unaffected by cookie blocking.</p>
+          <p>Browser-specific instructions are available from providers such as <a href="https://support.google.com/chrome/answer/95647" target="_blank" rel="noopener">Google Chrome</a> and <a href="https://support.mozilla.org/en-US/kb/cookies-information-websites-store-on-your-computer" target="_blank" rel="noopener">Mozilla Firefox</a>.</p>
+
+          <h2 id="updates-ck">4.9 Updates to This Notice</h2>
+          <p>This Cookie and Technology Notice will be updated if the technologies used on the website change — for example, if analytics services, authentication systems or advertising features are added.</p>
+          <p>The current version and its update date are shown at the top of this page.</p>
+
+          <h2 id="contact-ck">4.10 Contact</h2>
+          <div class="policy-contact-card">
+            <h3>Cookie &amp; Technology Questions</h3>
+            <p>For questions about this notice or how website technology is used:</p>
+            <p>📧 <strong>Email:</strong> <a href="mailto:kapilsensei777@gmail.com">kapilsensei777@gmail.com</a></p>
+            <p>🌐 <strong>Website:</strong> <a href="https://kapil-sensei-website.kapilsensei.workers.dev/" target="_blank" rel="noopener">kapil-sensei-website.kapilsensei.workers.dev</a></p>
+          </div>
+        </article>
+      </div>
+    </div>
+  </main>
+
+  <footer class="footer">
+    <div class="container footer-container">
+      <div class="footer-col brand-col">
+        <div class="footer-logo">
+          <img src="../assets/logo.png" alt="Kapil Sensei Logo" class="footer-avatar" />
+          <div>
+            <span class="footer-brand-title">KAPIL SENSEI</span>
+            <span class="footer-brand-sub">カピル<ruby>先生<rt>せんせい</rt></ruby></span>
+          </div>
+        </div>
+        <p class="footer-tagline">Empowering ambitious learners to master Japanese and build rewarding careers in Japan.</p>
+      </div>
+      <div class="footer-col">
+        <h4 class="footer-heading">Legal &amp; Policies</h4>
+        <ul class="footer-links">
+          <li><a href="../privacy-policy/">Privacy Policy</a></li>
+          <li><a href="../terms-and-conditions/">Terms &amp; Conditions</a></li>
+          <li><a href="../disclaimer/">Educational &amp; SSW Disclaimer</a></li>
+          <li><a href="../cookie-policy/">Cookie &amp; Technology Notice</a></li>
+        </ul>
+      </div>
+      <div class="footer-col">
+        <h4 class="footer-heading">Quick Links</h4>
+        <ul class="footer-links">
+          <li><a href="../">Home</a></li>
+          <li><a href="../#courses">Courses</a></li>
+          <li><a href="../#ssw-hub">SSW Hub</a></li>
+          <li><a href="../#faq">FAQ</a></li>
+        </ul>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <div class="container footer-bottom-container">
+        <p>&copy; 2026 Kapil Sensei (Kapil Giri). All rights reserved.</p>
+        <p class="footer-built">Designed with 🌸 for Japan Aspirants Worldwide</p>
+      </div>
+    </div>
+  </footer>
+  <script src="../app.js"></script>
+</body>
+</html>

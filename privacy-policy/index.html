@@ -1,0 +1,344 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Privacy Policy — Kapil Sensei | Japanese Language Education</title>
+  <meta name="description" content="Privacy Policy for Kapil Sensei — Japanese language education, JLPT and JFT-Basic preparation. How we handle your personal information." />
+  <link rel="icon" href="../assets/logo.png" type="image/png" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Outfit:wght@400;600;700&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="../style.css" />
+  <style>
+    .policy-hero {
+      background: linear-gradient(135deg, var(--bg-secondary) 0%, var(--bg-primary) 100%);
+      border-bottom: 1px solid var(--border-color);
+      padding: 3rem 0 2.5rem;
+    }
+    .policy-breadcrumb {
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
+      font-size: 0.82rem;
+      color: var(--text-muted);
+      margin-bottom: 1.25rem;
+    }
+    .policy-breadcrumb a { color: var(--accent-primary); text-decoration: none; }
+    .policy-badge {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.4rem;
+      background: rgba(139,92,246,0.12);
+      border: 1px solid rgba(139,92,246,0.3);
+      color: #a78bfa;
+      font-size: 0.72rem;
+      font-weight: 700;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      padding: 0.3rem 0.75rem;
+      border-radius: 999px;
+      margin-bottom: 1rem;
+    }
+    .policy-title {
+      font-family: 'Outfit', sans-serif;
+      font-size: clamp(1.75rem, 4vw, 2.5rem);
+      font-weight: 700;
+      color: var(--text-primary);
+      margin: 0 0 0.75rem;
+    }
+    .policy-meta-row {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 1.25rem;
+      margin-top: 1rem;
+    }
+    .policy-meta-item {
+      display: flex;
+      align-items: center;
+      gap: 0.4rem;
+      font-size: 0.85rem;
+      color: var(--text-secondary);
+    }
+    .policy-meta-item strong { color: var(--text-primary); font-weight: 600; }
+    .policy-layout {
+      display: grid;
+      grid-template-columns: 240px 1fr;
+      gap: 2.5rem;
+      padding: 3rem 0 4rem;
+      align-items: start;
+    }
+    @media (max-width: 768px) {
+      .policy-layout { grid-template-columns: 1fr; }
+      .policy-toc { display: none; }
+    }
+    .policy-toc {
+      position: sticky;
+      top: 90px;
+      background: var(--bg-secondary);
+      border: 1px solid var(--border-color);
+      border-radius: 12px;
+      padding: 1.25rem;
+    }
+    .policy-toc h4 {
+      font-size: 0.78rem;
+      font-weight: 700;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      color: var(--text-muted);
+      margin: 0 0 1rem;
+    }
+    .policy-toc-list { list-style: none; padding: 0; margin: 0; }
+    .policy-toc-list li { margin-bottom: 0.3rem; }
+    .policy-toc-list a {
+      display: block;
+      font-size: 0.82rem;
+      color: var(--text-secondary);
+      text-decoration: none;
+      padding: 0.3rem 0.5rem;
+      border-radius: 6px;
+      transition: background 0.2s, color 0.2s;
+    }
+    .policy-toc-list a:hover { background: rgba(139,92,246,0.1); color: var(--accent-primary); }
+    .policy-article h2 {
+      font-family: 'Outfit', sans-serif;
+      font-size: 1.35rem;
+      font-weight: 700;
+      color: var(--text-primary);
+      margin: 2.5rem 0 0.75rem;
+      padding-top: 0.5rem;
+      border-top: 1px solid var(--border-color);
+    }
+    .policy-article h2:first-of-type { margin-top: 0; border-top: none; padding-top: 0; }
+    .policy-article h3 { font-size: 1.05rem; font-weight: 600; color: var(--text-primary); margin: 1.5rem 0 0.5rem; }
+    .policy-article p { color: var(--text-secondary); line-height: 1.8; margin-bottom: 1rem; font-size: 0.93rem; }
+    .policy-article ul { color: var(--text-secondary); line-height: 1.8; font-size: 0.93rem; padding-left: 1.5rem; margin-bottom: 1rem; }
+    .policy-article li { margin-bottom: 0.35rem; }
+    .policy-article a { color: var(--accent-primary); text-decoration: none; }
+    .policy-article a:hover { text-decoration: underline; }
+    .policy-notice-box {
+      background: rgba(139,92,246,0.07);
+      border: 1px solid rgba(139,92,246,0.25);
+      border-radius: 10px;
+      padding: 1rem 1.25rem;
+      margin: 0 0 2rem;
+    }
+    .policy-notice-box p { margin: 0; font-size: 0.88rem; color: var(--text-secondary); }
+    .policy-contact-card {
+      background: var(--bg-secondary);
+      border: 1px solid var(--border-color);
+      border-radius: 12px;
+      padding: 1.5rem;
+      margin-top: 2.5rem;
+    }
+    .policy-contact-card h3 { margin-top: 0; }
+    .policy-contact-card p { margin-bottom: 0.4rem; }
+  </style>
+</head>
+<body class="dark-mode">
+  <header class="navbar" id="navbar" role="banner">
+    <div class="container nav-container">
+      <a href="../" class="nav-logo" aria-label="Kapil Sensei Homepage">
+        <img src="../assets/logo.png" alt="Kapil Sensei Logo" class="nav-logo-img" />
+        <div class="nav-logo-text">
+          <span class="nav-brand">KAPIL SENSEI</span>
+          <span class="nav-brand-sub">カピル先生</span>
+        </div>
+      </a>
+      <nav class="nav-links" aria-label="Main navigation">
+        <a href="../#courses" class="nav-link">Courses</a>
+        <a href="../#faq" class="nav-link">FAQ</a>
+        <a href="../" class="btn btn-primary nav-cta">← Back to Home</a>
+      </nav>
+    </div>
+  </header>
+
+  <main id="main-content">
+    <div class="policy-hero">
+      <div class="container">
+        <nav class="policy-breadcrumb" aria-label="Breadcrumb">
+          <a href="../">Home</a>
+          <span>›</span>
+          <span>Privacy Policy</span>
+        </nav>
+        <div class="policy-badge">🔒 Legal Document</div>
+        <h1 class="policy-title">Privacy Policy</h1>
+        <div class="policy-meta-row">
+          <div class="policy-meta-item">📅 <strong>Last updated:</strong> 24 October 2026</div>
+          <div class="policy-meta-item">📋 <strong>Version:</strong> 1.0</div>
+          <div class="policy-meta-item">🌐 <strong>Operator:</strong> Kapil Giri (Individual Educator)</div>
+        </div>
+      </div>
+    </div>
+
+    <div class="container">
+      <div class="policy-layout">
+        <aside class="policy-toc" aria-label="Table of Contents">
+          <h4>On This Page</h4>
+          <ul class="policy-toc-list">
+            <li><a href="#intro">1.1 Introduction</a></li>
+            <li><a href="#collect">1.2 Information We Collect</a></li>
+            <li><a href="#how-collect">1.3 How We Collect</a></li>
+            <li><a href="#use">1.4 How We Use It</a></li>
+            <li><a href="#legal-basis">1.5 Legal Basis</a></li>
+            <li><a href="#email-services">1.6 Email &amp; Services</a></li>
+            <li><a href="#sharing">1.7 Data Sharing</a></li>
+            <li><a href="#security">1.8 Data Security</a></li>
+            <li><a href="#retention">1.9 Retention &amp; Deletion</a></li>
+            <li><a href="#choices">1.10 Your Choices</a></li>
+            <li><a href="#children">1.11 Children's Privacy</a></li>
+            <li><a href="#changes">1.12 Changes</a></li>
+            <li><a href="#contact-pp">1.13 Contact</a></li>
+          </ul>
+        </aside>
+
+        <article class="policy-article">
+          <div class="policy-notice-box">
+            <p><strong>Important:</strong> Kapil Sensei is operated by <strong>Kapil Giri</strong>, an individual educator. The establishment of a formally registered educational institute is planned. This policy reflects current operations as of 24 October 2026.</p>
+          </div>
+
+          <h2 id="intro">1.1 Introduction</h2>
+          <p>Welcome to Kapil Sensei.</p>
+          <p>Kapil Sensei provides Japanese-language educational resources, JLPT and JFT-Basic preparation, and learning guidance relating to Japan's Specified Skilled Worker (SSW or 特定技能) programmes.</p>
+          <p>We respect the privacy of visitors, students and people who contact us. This Privacy Policy explains what personal information we may collect, why we use it, how we handle it, and what choices may be available to you.</p>
+          <p>Kapil Sensei is currently operated by an individual educator. The establishment of a formally registered educational institute is planned.</p>
+
+          <h2 id="collect">1.2 Information We May Collect</h2>
+          <p>Depending on the features you use, we may collect the following information:</p>
+          <ul>
+            <li><strong>Contact information:</strong> Your name, email address and telephone number when you contact us or request information about lessons.</li>
+            <li><strong>Enquiry information:</strong> The questions, messages and educational interests you share with us.</li>
+            <li><strong>Learning information:</strong> Course preferences, lesson-related communications and progress information, if these features are introduced.</li>
+            <li><strong>Technical information:</strong> Limited information such as browser type, device information, IP address and access logs, where collected by our website hosting provider or other technical services.</li>
+            <li><strong>Account information:</strong> Information processed by authentication or login services, if student accounts are enabled.</li>
+          </ul>
+          <p>Please do not send passwords, passport copies, citizenship documents, financial account details or other sensitive information through ordinary email unless there is a legitimate need and an appropriate secure process has been established.</p>
+
+          <h2 id="how-collect">1.3 How We Collect Information</h2>
+          <p>Information may be collected when you:</p>
+          <ul>
+            <li>Submit an enquiry or contact form.</li>
+            <li>Email us directly or communicate through Gmail.</li>
+            <li>Request information about Japanese lessons or future courses.</li>
+            <li>Register for an account, if registration is available.</li>
+            <li>Interact with website features that process technical information.</li>
+          </ul>
+          <p>Third-party hosting, authentication, analytics or embedded services may also process certain information. We will update this policy when necessary to reflect the services actually used.</p>
+
+          <h2 id="use">1.4 Why We Use Your Information</h2>
+          <p>We may use your information to:</p>
+          <ul>
+            <li>Respond to questions and enquiries.</li>
+            <li>Explain our Japanese-language lessons and educational resources.</li>
+            <li>Communicate about requested classes, course schedules and learning materials.</li>
+            <li>Administer student accounts, if applicable.</li>
+            <li>Improve the functionality and security of the website.</li>
+            <li>Meet applicable legal obligations.</li>
+            <li>Send optional educational updates or promotional messages where appropriate consent has been obtained.</li>
+          </ul>
+          <p>We will not intentionally use your contact information for unrelated purposes without an appropriate basis.</p>
+
+          <h2 id="legal-basis">1.5 Legal Basis and Consent</h2>
+          <p>We will handle personal information in accordance with applicable Nepalese law, including the Privacy Act, 2075, where applicable.</p>
+          <p>Where consent is required, we will explain the purpose of collecting the information and obtain appropriate consent before collecting or using it.</p>
+          <p>You should provide accurate information when contacting us. You may decline to provide optional information, although we may be unable to respond fully to an enquiry if essential details are missing.</p>
+
+          <h2 id="email-services">1.6 Email and Third-Party Services</h2>
+          <p>We currently use Gmail (<a href="mailto:kapilsensei777@gmail.com">kapilsensei777@gmail.com</a>) for handling enquiries and communications.</p>
+          <p>Google and other service providers may process information according to their own terms and privacy policies. Their processing may involve storage or access outside Nepal.</p>
+          <p>Our website is hosted on Cloudflare Workers. The hosting provider may process technical data required to deliver and protect the website. YouTube is used to embed video lessons; YouTube may use cookies when videos are played — see our <a href="../cookie-policy/">Cookie &amp; Technology Notice</a>.</p>
+          <p>We will identify additional relevant providers and update this section as our systems develop.</p>
+
+          <h2 id="sharing">1.7 Data Sharing</h2>
+          <p>We do not intend to sell students' personal information.</p>
+          <p>We may share limited information when reasonably necessary with:</p>
+          <ul>
+            <li>Service providers that support website hosting, email or website security.</li>
+            <li>Educational service providers involved in delivering a service you have requested.</li>
+            <li>Competent authorities when disclosure is required by applicable law.</li>
+          </ul>
+          <p>We will not disclose personal information to unrelated third parties for their independent marketing without an appropriate legal basis.</p>
+
+          <h2 id="security">1.8 Data Security</h2>
+          <p>We will take reasonable measures appropriate to our operations to protect personal information against unauthorised access, disclosure, alteration or loss.</p>
+          <p>However, no website, email service or internet transmission can be guaranteed to be completely secure.</p>
+          <p>Please avoid sending sensitive documents or confidential information through unsecured channels.</p>
+
+          <h2 id="retention">1.9 Data Retention and Deletion</h2>
+          <p>We will retain personal information only for as long as reasonably necessary for the purpose for which it was collected, subject to applicable legal and recordkeeping requirements.</p>
+          <p>You may request correction or deletion of information by contacting us. We will review your request and respond in accordance with applicable law.</p>
+          <p>Some information may need to be retained for legitimate legal, security or administrative reasons.</p>
+          <p><strong>Note on browser-stored data:</strong> Student account information on this website is stored locally in your browser (localStorage) on your device only. It is not transmitted to or stored on our servers. You may clear it at any time through your browser settings.</p>
+
+          <h2 id="choices">1.10 Your Privacy Choices</h2>
+          <p>Subject to applicable law, you may contact us to:</p>
+          <ul>
+            <li>Ask what personal information we hold about you.</li>
+            <li>Request correction of inaccurate information.</li>
+            <li>Request deletion of information that is no longer required.</li>
+            <li>Withdraw consent where processing relies on consent.</li>
+            <li>Opt out of optional promotional communications.</li>
+          </ul>
+          <p>We will explain if a request cannot be fully accommodated because of a legal obligation or another applicable exception.</p>
+
+          <h2 id="children">1.11 Children's Privacy</h2>
+          <p>Our educational resources may be useful to younger learners. If a student is a minor, a parent or legal guardian should assist with enrolment or the sharing of personal information where appropriate.</p>
+          <p>We do not knowingly seek unnecessary personal information from children. If you believe a child has provided information that should not have been collected, please contact us.</p>
+
+          <h2 id="changes">1.12 Changes to This Policy</h2>
+          <p>We may update this Privacy Policy when our website, services or legal obligations change.</p>
+          <p>The latest version and its effective date will be published on this page. Material changes will be communicated where appropriate.</p>
+
+          <h2 id="contact-pp">1.13 Contact</h2>
+          <div class="policy-contact-card">
+            <h3>Privacy Questions &amp; Requests</h3>
+            <p>For privacy-related questions or requests, please contact:</p>
+            <p>📧 <strong>Email:</strong> <a href="mailto:kapilsensei777@gmail.com">kapilsensei777@gmail.com</a></p>
+            <p>🌐 <strong>Website:</strong> <a href="https://kapil-sensei-website.kapilsensei.workers.dev/" target="_blank" rel="noopener">kapil-sensei-website.kapilsensei.workers.dev</a></p>
+          </div>
+        </article>
+      </div>
+    </div>
+  </main>
+
+  <footer class="footer">
+    <div class="container footer-container">
+      <div class="footer-col brand-col">
+        <div class="footer-logo">
+          <img src="../assets/logo.png" alt="Kapil Sensei Logo" class="footer-avatar" />
+          <div>
+            <span class="footer-brand-title">KAPIL SENSEI</span>
+            <span class="footer-brand-sub">カピル<ruby>先生<rt>せんせい</rt></ruby></span>
+          </div>
+        </div>
+        <p class="footer-tagline">Empowering ambitious learners to master Japanese and build rewarding careers in Japan.</p>
+      </div>
+      <div class="footer-col">
+        <h4 class="footer-heading">Legal &amp; Policies</h4>
+        <ul class="footer-links">
+          <li><a href="../privacy-policy/">Privacy Policy</a></li>
+          <li><a href="../terms-and-conditions/">Terms &amp; Conditions</a></li>
+          <li><a href="../disclaimer/">Educational &amp; SSW Disclaimer</a></li>
+          <li><a href="../cookie-policy/">Cookie &amp; Technology Notice</a></li>
+        </ul>
+      </div>
+      <div class="footer-col">
+        <h4 class="footer-heading">Quick Links</h4>
+        <ul class="footer-links">
+          <li><a href="../">Home</a></li>
+          <li><a href="../#courses">Courses</a></li>
+          <li><a href="../#ssw-hub">SSW Hub</a></li>
+          <li><a href="../#faq">FAQ</a></li>
+        </ul>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <div class="container footer-bottom-container">
+        <p>&copy; 2026 Kapil Sensei (Kapil Giri). All rights reserved.</p>
+        <p class="footer-built">Designed with 🌸 for Japan Aspirants Worldwide</p>
+      </div>
+    </div>
+  </footer>
+  <script src="../app.js"></script>
+</body>
+</html>
