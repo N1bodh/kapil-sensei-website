@@ -1271,6 +1271,146 @@ function validateName(name) {
   return re.test(trimmed);
 }
 
+function validatePhoneNumber(countryCode, rawNumber) {
+  const clean = String(rawNumber).replace(/[\s\-\(\)\.]/g, '');
+
+  if (!clean || !/^\d+$/.test(clean)) {
+    return { valid: false, message: 'Please enter a valid mobile number with digits only.' };
+  }
+
+  switch (countryCode) {
+    case '+977': // Nepal
+      if (clean.length !== 10) {
+        return { valid: false, message: 'Nepal mobile numbers must be exactly 10 digits (e.g. 98XXXXXXXX).' };
+      }
+      if (!/^9[678]\d{8}$/.test(clean)) {
+        return { valid: false, message: 'Valid Nepal mobile numbers start with 98 or 97 (e.g. 9812345678).' };
+      }
+      return { valid: true, formatted: `+977 ${clean}`, clean, country: 'Nepal' };
+
+    case '+81': // Japan
+      if (clean.length < 10 || clean.length > 11) {
+        return { valid: false, message: 'Japan phone numbers must be 10 or 11 digits (e.g. 080XXXXXXXX).' };
+      }
+      return { valid: true, formatted: `+81 ${clean}`, clean, country: 'Japan' };
+
+    case '+91': // India
+      if (clean.length !== 10) {
+        return { valid: false, message: 'India mobile numbers must be exactly 10 digits.' };
+      }
+      if (!/^[6-9]\d{9}$/.test(clean)) {
+        return { valid: false, message: 'Valid Indian mobile numbers start with 6, 7, 8, or 9.' };
+      }
+      return { valid: true, formatted: `+91 ${clean}`, clean, country: 'India' };
+
+    case '+880': // Bangladesh
+      if (clean.length !== 10 && clean.length !== 11) {
+        return { valid: false, message: 'Bangladesh numbers must be 10 or 11 digits (e.g. 1XXXXXXXXX).' };
+      }
+      return { valid: true, formatted: `+880 ${clean}`, clean, country: 'Bangladesh' };
+
+    case '+94': // Sri Lanka
+      if (clean.length !== 9 && clean.length !== 10) {
+        return { valid: false, message: 'Sri Lanka numbers must be 9 digits (e.g. 7XXXXXXXX).' };
+      }
+      return { valid: true, formatted: `+94 ${clean}`, clean, country: 'Sri Lanka' };
+
+    case '+63': // Philippines
+      if (clean.length !== 10) {
+        return { valid: false, message: 'Philippines mobile numbers must be 10 digits (e.g. 9XXXXXXXXX).' };
+      }
+      return { valid: true, formatted: `+63 ${clean}`, clean, country: 'Philippines' };
+
+    case '+84': // Vietnam
+      if (clean.length < 9 || clean.length > 10) {
+        return { valid: false, message: 'Vietnam phone numbers must be 9 or 10 digits.' };
+      }
+      return { valid: true, formatted: `+84 ${clean}`, clean, country: 'Vietnam' };
+
+    case '+95': // Myanmar
+      if (clean.length < 8 || clean.length > 10) {
+        return { valid: false, message: 'Myanmar phone numbers must be between 8 and 10 digits.' };
+      }
+      return { valid: true, formatted: `+95 ${clean}`, clean, country: 'Myanmar' };
+
+    case '+62': // Indonesia
+      if (clean.length < 9 || clean.length > 12) {
+        return { valid: false, message: 'Indonesia phone numbers must be between 9 and 12 digits.' };
+      }
+      return { valid: true, formatted: `+62 ${clean}`, clean, country: 'Indonesia' };
+
+    case '+1': // US / Canada
+      if (clean.length !== 10) {
+        return { valid: false, message: 'US/Canada phone numbers must be exactly 10 digits.' };
+      }
+      return { valid: true, formatted: `+1 ${clean}`, clean, country: 'USA/Canada' };
+
+    case '+44': // UK
+      if (clean.length !== 10 && clean.length !== 11) {
+        return { valid: false, message: 'UK phone numbers must be 10 or 11 digits.' };
+      }
+      return { valid: true, formatted: `+44 ${clean}`, clean, country: 'UK' };
+
+    case '+61': // Australia
+      if (clean.length !== 9 && clean.length !== 10) {
+        return { valid: false, message: 'Australia phone numbers must be 9 digits.' };
+      }
+      return { valid: true, formatted: `+61 ${clean}`, clean, country: 'Australia' };
+
+    case '+971': // UAE
+      if (clean.length !== 9) {
+        return { valid: false, message: 'UAE phone numbers must be 9 digits (e.g. 5XXXXXXXX).' };
+      }
+      return { valid: true, formatted: `+971 ${clean}`, clean, country: 'UAE' };
+
+    default: // Generic International
+      if (clean.length < 7 || clean.length > 15) {
+        return { valid: false, message: 'Please enter a valid international mobile number (7 to 15 digits).' };
+      }
+      return { valid: true, formatted: `${countryCode !== 'other' ? countryCode : ''} ${clean}`.trim(), clean, country: 'International' };
+  }
+}
+
+function bindCountryCodeListeners(selectId, inputId, hintId, errorId) {
+  const select = document.getElementById(selectId);
+  const input = document.getElementById(inputId);
+  const hint = document.getElementById(hintId);
+  const error = document.getElementById(errorId);
+  if (!select || !input) return;
+
+  const updateHint = () => {
+    const selectedOption = select.options[select.selectedIndex];
+    const hintText = selectedOption ? selectedOption.getAttribute('data-hint') : '';
+    const country = selectedOption ? selectedOption.getAttribute('data-country') : '';
+    if (hint && hintText) {
+      hint.textContent = `Format for ${country}: ${hintText}`;
+    }
+    if (input) {
+      if (select.value === '+977') input.placeholder = 'e.g. 9812345678';
+      else if (select.value === '+81') input.placeholder = 'e.g. 08012345678';
+      else if (select.value === '+91') input.placeholder = 'e.g. 9876543210';
+      else if (select.value === '+1') input.placeholder = 'e.g. 2025550143';
+      else input.placeholder = 'e.g. Mobile number';
+    }
+    if (error) {
+      error.classList.remove('active');
+      error.textContent = '';
+    }
+    input.classList.remove('input-invalid');
+  };
+
+  select.addEventListener('change', updateHint);
+  input.addEventListener('input', () => {
+    if (error) {
+      error.classList.remove('active');
+      error.textContent = '';
+    }
+    input.classList.remove('input-invalid');
+  });
+
+  updateHint();
+}
+
 function getStoredUser() {
   try {
     const raw = localStorage.getItem('kapil_sensei_user');
@@ -1312,11 +1452,16 @@ function initConsultationForm() {
 
   const nameInput = document.getElementById('consult-name');
   const emailInput = document.getElementById('consult-email');
+  const countryCodeSelect = document.getElementById('consult-country-code');
   const phoneInput = document.getElementById('consult-phone');
   const messageInput = document.getElementById('consult-message');
 
   const nameError = document.getElementById('consult-name-error');
   const emailError = document.getElementById('consult-email-error');
+  const phoneError = document.getElementById('consult-phone-error');
+
+  // Bind dynamic country code change listener
+  bindCountryCodeListeners('consult-country-code', 'consult-phone', 'consult-phone-hint', 'consult-phone-error');
 
   // Open modal when any consultation / course query button is clicked
   document.querySelectorAll('.open-consultation-btn').forEach(btn => {
@@ -1339,9 +1484,16 @@ function initConsultationForm() {
 
       // Pre-fill user details if logged in
       const savedUser = getStoredUser();
-      if (savedUser && nameInput && emailInput) {
-        if (!nameInput.value) nameInput.value = savedUser.name || '';
-        if (!emailInput.value) emailInput.value = savedUser.email || '';
+      if (savedUser) {
+        if (nameInput && !nameInput.value) nameInput.value = savedUser.name || '';
+        if (emailInput && !emailInput.value) emailInput.value = savedUser.email || '';
+        if (phoneInput && !phoneInput.value && savedUser.phone) {
+          phoneInput.value = savedUser.phone;
+          if (countryCodeSelect && savedUser.countryCode) {
+            countryCodeSelect.value = savedUser.countryCode;
+            countryCodeSelect.dispatchEvent(new Event('change'));
+          }
+        }
       }
 
       if (modal) {
@@ -1384,7 +1536,8 @@ function initConsultationForm() {
 
       const name = nameInput.value.trim();
       const email = emailInput.value.trim();
-      const phone = phoneInput ? phoneInput.value.trim() : '';
+      const countryCode = countryCodeSelect ? countryCodeSelect.value : '+977';
+      const rawPhone = phoneInput ? phoneInput.value.trim() : '';
       const goal = goalSelect ? goalSelect.value : '';
       const goalText = goalSelect && goalSelect.selectedOptions[0] ? goalSelect.selectedOptions[0].textContent : goal;
       const course = hiddenCourse ? hiddenCourse.value : 'Structured Study Programs';
@@ -1392,7 +1545,7 @@ function initConsultationForm() {
 
       let hasError = false;
 
-      // Validate name
+      // Validate student name
       if (!validateName(name)) {
         if (nameError) {
           nameError.textContent = 'Please enter a valid student name (at least 2 characters).';
@@ -1405,7 +1558,7 @@ function initConsultationForm() {
         nameInput.classList.remove('input-invalid');
       }
 
-      // Validate email
+      // Validate email ID
       if (!validateEmail(email)) {
         if (emailError) {
           emailError.textContent = 'Please enter a valid email address (e.g. name@gmail.com).';
@@ -1418,8 +1571,23 @@ function initConsultationForm() {
         emailInput.classList.remove('input-invalid');
       }
 
+      // Validate phone with selected country code structure
+      const phoneValidation = validatePhoneNumber(countryCode, rawPhone);
+      if (!phoneValidation.valid) {
+        if (phoneError) {
+          phoneError.textContent = phoneValidation.message;
+          phoneError.classList.add('active');
+        }
+        if (phoneInput) phoneInput.classList.add('input-invalid');
+        hasError = true;
+      } else {
+        if (phoneError) phoneError.classList.remove('active');
+        if (phoneInput) phoneInput.classList.remove('input-invalid');
+      }
+
       if (hasError) return;
 
+      const formattedPhone = phoneValidation.formatted;
       const recipient = 'kapilsensei777@gmail.com';
       const subject = `[Course Query] Academic Excellence: ${course} - ${name}`;
       const emailBody = `Konnichiwa Kapil Sensei,
@@ -1429,7 +1597,7 @@ I would like to submit an academic query regarding your Structured Study Program
 STUDENT DETAILS:
 • Full Name: ${name}
 • Email: ${email}
-• WhatsApp / Phone: ${phone || 'Not provided'}
+• WhatsApp / Mobile: ${formattedPhone} (${phoneValidation.country || 'Verified'})
 • Selected Program / Course: ${course}
 • Target Learning Goal: ${goalText}
 
@@ -1451,7 +1619,7 @@ Submitted via Kapil Sensei Official Portal (kapil-sensei-website)`;
       if (mailtoBtn) mailtoBtn.href = mailtoUrl;
 
       if (successDetails) {
-        successDetails.innerHTML = `Your query for <strong>${course}</strong> has been prepared for Kapil Sensei at <strong>kapilsensei777@gmail.com</strong>. Click below to launch your email!`;
+        successDetails.innerHTML = `Your query for <strong>${course}</strong> with verified contact <strong>${formattedPhone}</strong> has been prepared for Kapil Sensei at <strong>kapilsensei777@gmail.com</strong>. Click below to launch your email!`;
       }
 
       form.style.display = 'none';
@@ -1610,6 +1778,9 @@ function initStudentAuth() {
     showToast('Signed out successfully. またね (See you soon)!');
   };
 
+  // Bind Country Code dynamic listener for Student Sign Up
+  bindCountryCodeListeners('signup-country-code', 'signup-phone', 'signup-phone-hint', 'signup-phone-error');
+
   if (authLogoutBtn) authLogoutBtn.addEventListener('click', handleLogout);
   if (mobileLogoutBtn) mobileLogoutBtn.addEventListener('click', handleLogout);
 
@@ -1619,15 +1790,20 @@ function initStudentAuth() {
       e.preventDefault();
       const nameInput = document.getElementById('signup-name');
       const emailInput = document.getElementById('signup-email');
+      const countryCodeSelect = document.getElementById('signup-country-code');
+      const phoneInput = document.getElementById('signup-phone');
       const pwdInput = document.getElementById('signup-password');
       const goalInput = document.getElementById('signup-goal');
 
       const nameError = document.getElementById('signup-name-error');
       const emailError = document.getElementById('signup-email-error');
+      const phoneError = document.getElementById('signup-phone-error');
       const pwdError = document.getElementById('signup-password-error');
 
       const name = nameInput.value.trim();
       const email = emailInput.value.trim();
+      const countryCode = countryCodeSelect ? countryCodeSelect.value : '+977';
+      const rawPhone = phoneInput ? phoneInput.value.trim() : '';
       const password = pwdInput.value;
       const goal = goalInput ? goalInput.value : 'General Japanese';
 
@@ -1659,6 +1835,20 @@ function initStudentAuth() {
         emailInput.classList.remove('input-invalid');
       }
 
+      // Validate Mobile Number with Country Code Structure
+      const phoneValidation = validatePhoneNumber(countryCode, rawPhone);
+      if (!phoneValidation.valid) {
+        if (phoneError) {
+          phoneError.textContent = phoneValidation.message;
+          phoneError.classList.add('active');
+        }
+        if (phoneInput) phoneInput.classList.add('input-invalid');
+        hasError = true;
+      } else {
+        if (phoneError) phoneError.classList.remove('active');
+        if (phoneInput) phoneInput.classList.remove('input-invalid');
+      }
+
       // Validate Password
       if (password.length < 6) {
         if (pwdError) {
@@ -1677,6 +1867,10 @@ function initStudentAuth() {
       const newUser = {
         name,
         email,
+        countryCode,
+        phone: phoneValidation.clean,
+        fullPhone: phoneValidation.formatted,
+        country: phoneValidation.country,
         goal,
         isLoggedIn: true,
         registeredAt: new Date().toISOString()

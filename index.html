@@ -1221,6 +1221,35 @@
           </div>
 
           <div class="form-group">
+            <label for="signup-phone">WhatsApp / Mobile Number *</label>
+            <div class="phone-input-composite">
+              <div class="country-code-select-wrap">
+                <select id="signup-country-code" class="country-code-select" aria-label="Country Code">
+                  <option value="+977" data-country="Nepal" data-flag="🇳🇵" data-hint="10 digits (e.g. 98XXXXXXXX)" selected>🇳🇵 +977 (Nepal)</option>
+                  <option value="+81" data-country="Japan" data-flag="🇯🇵" data-hint="10-11 digits (e.g. 080-XXXX-XXXX)">🇯🇵 +81 (Japan)</option>
+                  <option value="+91" data-country="India" data-flag="🇮🇳" data-hint="10 digits (e.g. 98XXXXXXXX)">🇮🇳 +91 (India)</option>
+                  <option value="+880" data-country="Bangladesh" data-flag="🇧🇩" data-hint="10 digits (e.g. 1XXXXXXXXX)">🇧🇩 +880 (Bangladesh)</option>
+                  <option value="+94" data-country="Sri Lanka" data-flag="🇱🇰" data-hint="9 digits (e.g. 7XXXXXXXX)">🇱🇰 +94 (Sri Lanka)</option>
+                  <option value="+63" data-country="Philippines" data-flag="🇵🇭" data-hint="10 digits (e.g. 9XXXXXXXXX)">🇵🇭 +63 (Philippines)</option>
+                  <option value="+84" data-country="Vietnam" data-flag="🇻🇳" data-hint="9-10 digits (e.g. 9XXXXXXXX)">🇻🇳 +84 (Vietnam)</option>
+                  <option value="+95" data-country="Myanmar" data-flag="🇲🇲" data-hint="8-10 digits">🇲🇲 +95 (Myanmar)</option>
+                  <option value="+62" data-country="Indonesia" data-flag="🇮🇩" data-hint="9-12 digits">🇮🇩 +62 (Indonesia)</option>
+                  <option value="+1" data-country="USA / Canada" data-flag="🇺🇸" data-hint="10 digits (e.g. 202-XXX-XXXX)">🇺🇸 +1 (US / CA)</option>
+                  <option value="+44" data-country="United Kingdom" data-flag="🇬🇧" data-hint="10 digits (e.g. 7XXXXXXXXX)">🇬🇧 +44 (UK)</option>
+                  <option value="+61" data-country="Australia" data-flag="🇦🇺" data-hint="9 digits (e.g. 4XXXXXXXX)">🇦🇺 +61 (Australia)</option>
+                  <option value="+971" data-country="UAE" data-flag="🇦🇪" data-hint="9 digits (e.g. 5XXXXXXXX)">🇦🇪 +971 (UAE)</option>
+                  <option value="other" data-country="Other" data-flag="🌐" data-hint="7-15 digits international number">🌐 Other (+Intl)</option>
+                </select>
+              </div>
+              <div class="phone-number-wrap">
+                <input type="tel" id="signup-phone" class="phone-number-input" placeholder="e.g. 9812345678" required autocomplete="tel" />
+              </div>
+            </div>
+            <div class="phone-format-hint" id="signup-phone-hint">Format: 10 digits for Nepal (e.g. 98XXXXXXXX / 97XXXXXXXX)</div>
+            <div class="form-error-text" id="signup-phone-error"></div>
+          </div>
+
+          <div class="form-group">
             <label for="signup-goal">Target Japanese Goal / Sector</label>
             <div class="input-icon-wrapper">
               <span class="input-lead-icon">🎯</span>
@@ -1296,8 +1325,32 @@
             <div class="form-error-text" id="consult-email-error"></div>
           </div>
           <div class="form-group">
-            <label for="consult-phone">WhatsApp / Phone Number *</label>
-            <input type="tel" id="consult-phone" placeholder="e.g. +977 98XXXXXXXX" required />
+            <label for="consult-phone">WhatsApp / Mobile Number *</label>
+            <div class="phone-input-composite">
+              <div class="country-code-select-wrap">
+                <select id="consult-country-code" class="country-code-select" aria-label="Country Code">
+                  <option value="+977" data-country="Nepal" data-flag="🇳🇵" data-hint="10 digits (e.g. 98XXXXXXXX)" selected>🇳🇵 +977 (Nepal)</option>
+                  <option value="+81" data-country="Japan" data-flag="🇯🇵" data-hint="10-11 digits (e.g. 080-XXXX-XXXX)">🇯🇵 +81 (Japan)</option>
+                  <option value="+91" data-country="India" data-flag="🇮🇳" data-hint="10 digits (e.g. 98XXXXXXXX)">🇮🇳 +91 (India)</option>
+                  <option value="+880" data-country="Bangladesh" data-flag="🇧🇩" data-hint="10 digits (e.g. 1XXXXXXXXX)">🇧🇩 +880 (Bangladesh)</option>
+                  <option value="+94" data-country="Sri Lanka" data-flag="🇱🇰" data-hint="9 digits (e.g. 7XXXXXXXX)">🇱🇰 +94 (Sri Lanka)</option>
+                  <option value="+63" data-country="Philippines" data-flag="🇵🇭" data-hint="10 digits (e.g. 9XXXXXXXXX)">🇵🇭 +63 (Philippines)</option>
+                  <option value="+84" data-country="Vietnam" data-flag="🇻🇳" data-hint="9-10 digits (e.g. 9XXXXXXXX)">🇻🇳 +84 (Vietnam)</option>
+                  <option value="+95" data-country="Myanmar" data-flag="🇲🇲" data-hint="8-10 digits">🇲🇲 +95 (Myanmar)</option>
+                  <option value="+62" data-country="Indonesia" data-flag="🇮🇩" data-hint="9-12 digits">🇮🇩 +62 (Indonesia)</option>
+                  <option value="+1" data-country="USA / Canada" data-flag="🇺🇸" data-hint="10 digits (e.g. 202-XXX-XXXX)">🇺🇸 +1 (US / CA)</option>
+                  <option value="+44" data-country="United Kingdom" data-flag="🇬🇧" data-hint="10 digits (e.g. 7XXXXXXXXX)">🇬🇧 +44 (UK)</option>
+                  <option value="+61" data-country="Australia" data-flag="🇦🇺" data-hint="9 digits (e.g. 4XXXXXXXX)">🇦🇺 +61 (Australia)</option>
+                  <option value="+971" data-country="UAE" data-flag="🇦🇪" data-hint="9 digits (e.g. 5XXXXXXXX)">🇦🇪 +971 (UAE)</option>
+                  <option value="other" data-country="Other" data-flag="🌐" data-hint="7-15 digits international number">🌐 Other (+Intl)</option>
+                </select>
+              </div>
+              <div class="phone-number-wrap">
+                <input type="tel" id="consult-phone" class="phone-number-input" placeholder="e.g. 9812345678" required autocomplete="tel" />
+              </div>
+            </div>
+            <div class="phone-format-hint" id="consult-phone-hint">Format: 10 digits for Nepal (e.g. 98XXXXXXXX / 97XXXXXXXX)</div>
+            <div class="form-error-text" id="consult-phone-error"></div>
           </div>
           <div class="form-group">
             <label for="consult-goal">Target Goal / Interest *</label>

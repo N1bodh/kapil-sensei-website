@@ -4402,4 +4402,102 @@ body.mobile-menu-open {
   flex-wrap: wrap;
 }
 
+/* ===================================================================
+   COMPOSITE PHONE & COUNTRY CODE INPUT STYLES
+   =================================================================== */
+.phone-input-composite {
+  display: flex;
+  align-items: stretch;
+  width: 100%;
+  position: relative;
+}
+
+.country-code-select-wrap {
+  width: 165px;
+  flex-shrink: 0;
+}
+
+.country-code-select {
+  width: 100% !important;
+  height: 100%;
+  padding: 11px 8px !important;
+  background: var(--bg-card);
+  border: 1px solid var(--border-subtle) !important;
+  border-right: none !important;
+  border-radius: var(--radius-sm) 0 0 var(--radius-sm) !important;
+  color: var(--text-primary);
+  font-family: inherit;
+  font-size: 0.83rem !important;
+  font-weight: 600;
+  outline: none;
+  cursor: pointer;
+  transition: all var(--transition-fast);
+}
+
+.country-code-select:focus {
+  border-color: var(--accent-crimson) !important;
+  box-shadow: 0 0 10px rgba(225, 29, 72, 0.25);
+  z-index: 2;
+}
+
+.country-code-select option {
+  background: var(--bg-secondary);
+  color: var(--text-primary);
+  font-size: 0.85rem;
+}
+
+.phone-number-wrap {
+  flex: 1;
+}
+
+.phone-number-input {
+  width: 100% !important;
+  height: 100%;
+  padding: 11px 14px !important;
+  background: var(--bg-card);
+  border: 1px solid var(--border-subtle) !important;
+  border-radius: 0 var(--radius-sm) var(--radius-sm) 0 !important;
+  color: var(--text-primary);
+  font-family: inherit;
+  font-size: 0.95rem;
+  outline: none;
+  transition: all var(--transition-fast);
+}
+
+.phone-number-input:focus {
+  border-color: var(--accent-crimson) !important;
+  box-shadow: 0 0 10px rgba(225, 29, 72, 0.25);
+  z-index: 2;
+}
+
+.phone-format-hint {
+  font-size: 0.74rem;
+  color: var(--text-muted);
+  margin-top: 5px;
+  font-weight: 500;
+  display: flex;
+  align-items: center;
+  gap: 4px;
+}
+
+@media (max-width: 480px) {
+  .phone-input-composite {
+    flex-direction: column;
+  }
+
+  .country-code-select-wrap {
+    width: 100%;
+    margin-bottom: 6px;
+  }
+
+  .country-code-select {
+    border-radius: var(--radius-sm) !important;
+    border-right: 1px solid var(--border-subtle) !important;
+  }
+
+  .phone-number-input {
+    border-radius: var(--radius-sm) !important;
+  }
+}
+
 
