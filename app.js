@@ -466,13 +466,15 @@ function initTopicDropdownNavigator() {
    =================================================================== */
 const VIDEO_DATABASE = [
   {
-    id: 'OwOxFUSe6ts',
+    id: 'tkrewbc9kuc',
     title: 'Welcome to Kapil Sensei! Your daily Japanese class for JLPT, JFT-Basic & SSW.',
     category: 'all',
     catLabel: 'Orientation',
-    duration: '04:15',
-    thumbnail: 'https://i.ytimg.com/vi/OwOxFUSe6ts/hqdefault.jpg',
-    views: 'Featured'
+    duration: 'Shorts ⚡',
+    thumbnail: 'https://img.youtube.com/vi/tkrewbc9kuc/hqdefault.jpg',
+    views: 'Featured Short',
+    url: 'https://youtube.com/shorts/tkrewbc9kuc?si=vI0ehSdfG82wOblG',
+    isShort: true
   },
   {
     id: 'OwOxFUSe6ts', // Fallback link to channel intro
@@ -600,7 +602,7 @@ function initVideoShowcase() {
 
   if (openIntroBtn) {
     openIntroBtn.addEventListener('click', () => {
-      openVideoModal('OwOxFUSe6ts', 'Welcome to Kapil Sensei! Japanese class for JLPT, JFT-Basic & SSW');
+      openVideoModal('tkrewbc9kuc', 'Welcome to Kapil Sensei! Japanese class for JLPT, JFT-Basic & SSW', 'https://youtube.com/shorts/tkrewbc9kuc?si=vI0ehSdfG82wOblG');
     });
   }
 
