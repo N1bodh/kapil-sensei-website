@@ -493,13 +493,15 @@ const VIDEO_DATABASE = [
     views: 'Lesson 2'
   },
   {
-    id: 'OwOxFUSe6ts',
+    id: 'A4cK_lst5XE',
     title: 'SSW Kaigo (介護) Specialized Vocabulary: Transfer & Meal Support Terms',
     category: 'kaigo',
     catLabel: 'Kaigo Caregiving',
-    duration: '19:50',
-    thumbnail: 'https://images.unsplash.com/photo-1576765608535-5f04d1e3f289?auto=format&fit=crop&w=640&q=80',
-    views: 'SSW Skills'
+    duration: 'Shorts ⚡',
+    thumbnail: 'https://img.youtube.com/vi/A4cK_lst5XE/hqdefault.jpg',
+    views: 'YouTube Shorts',
+    url: 'https://youtube.com/shorts/A4cK_lst5XE?feature=share',
+    isShort: true
   },
   {
     id: 'OwOxFUSe6ts',
@@ -549,10 +551,13 @@ function initVideoShowcase() {
               <path d="M8 5v14l11-7z"/>
             </svg>
           </div>
-          <span class="video-duration-tag">${video.duration}</span>
+          <span class="video-duration-tag ${video.isShort ? 'short-tag' : ''}">${video.duration}</span>
         </div>
         <div class="video-card-content">
-          <span class="video-category-tag">${video.catLabel}</span>
+          <div style="display:flex; justify-content:space-between; align-items:center; margin-bottom:4px;">
+            <span class="video-category-tag">${video.catLabel}</span>
+            ${video.isShort ? '<span style="font-size:0.7rem; font-weight:800; color:#ef4444; background:rgba(239,68,68,0.12); padding:2px 8px; border-radius:12px; border:1px solid rgba(239,68,68,0.35);">⚡ SHORTS</span>' : ''}
+          </div>
           <h4 class="video-card-title">${video.title}</h4>
           <div class="video-card-meta">
             <span>Kapil Sensei</span>
@@ -562,7 +567,7 @@ function initVideoShowcase() {
       `;
 
       card.addEventListener('click', () => {
-        openVideoModal(video.id, video.title);
+        openVideoModal(video.id, video.title, video.url);
       });
 
       grid.appendChild(card);
@@ -577,10 +582,18 @@ function initVideoShowcase() {
     });
   });
 
-  function openVideoModal(videoId, title) {
+  function openVideoModal(videoId, title, directUrl) {
     if (videoModal && modalIframe) {
-      videoModalTitle.textContent = title;
+      if (videoModalTitle) videoModalTitle.textContent = title;
       modalIframe.src = `https://www.youtube.com/embed/${videoId}?autoplay=1&rel=0`;
+      const ytLink = document.getElementById('video-modal-yt-link');
+      if (ytLink) {
+        const targetUrl = directUrl || `https://www.youtube.com/watch?v=${videoId}`;
+        ytLink.href = targetUrl;
+        ytLink.innerHTML = targetUrl.includes('shorts')
+          ? '<span>⚡ Watch on YouTube Shorts ↗</span>'
+          : '<span>Watch on YouTube ↗</span>';
+      }
       videoModal.classList.add('open');
     }
   }
@@ -588,6 +601,14 @@ function initVideoShowcase() {
   if (openIntroBtn) {
     openIntroBtn.addEventListener('click', () => {
       openVideoModal('OwOxFUSe6ts', 'Welcome to Kapil Sensei! Japanese class for JLPT, JFT-Basic & SSW');
+    });
+  }
+
+  const closeVideoFooterBtn = document.getElementById('close-video-modal-btn');
+  if (closeVideoFooterBtn && videoModal && modalIframe) {
+    closeVideoFooterBtn.addEventListener('click', () => {
+      modalIframe.src = '';
+      videoModal.classList.remove('open');
     });
   }
 
@@ -1156,6 +1177,19 @@ const SECTOR_DATA = {
         </ul>
         <h4>Career Pathway:</h4>
         <p>After 3 years of work in Japan, you become eligible to sit for the national certification exam (Kaigofukushishi <ruby>介護福祉士<rt>かいごふくしし</rt></ruby>). Passing unlocks indefinite residency and family sponsorship!</p>
+        <div style="background: rgba(225, 29, 72, 0.12); border: 1px solid rgba(225, 29, 72, 0.35); padding: 14px 16px; border-radius: 8px;">
+          <div style="display: flex; align-items: center; gap: 8px; font-weight: 800; color: var(--accent-sakura);">
+            <span>⚡ Featured Lesson:</span>
+            <span style="font-size: 0.72rem; background: #ea4335; color: #fff; padding: 2px 7px; border-radius: 4px;">YOUTUBE SHORTS</span>
+          </div>
+          <p style="margin: 6px 0 10px 0; font-size: 0.9rem; color: var(--text-secondary);">
+            <strong>SSW Kaigo (介護) Specialized Vocabulary:</strong> Transfer &amp; Meal Support Terms.
+          </p>
+          <a href="https://youtube.com/shorts/A4cK_lst5XE?feature=share" target="_blank" rel="noopener" class="btn btn-youtube-sm" style="display: inline-flex; align-items: center; gap: 6px;">
+            <svg viewBox="0 0 24 24" width="16" height="16" fill="currentColor"><path d="M8 5v14l11-7z"/></svg>
+            <span>Watch on YouTube Shorts (Transfer &amp; Meal Support) ↗</span>
+          </a>
+        </div>
       </div>
     `
   },
