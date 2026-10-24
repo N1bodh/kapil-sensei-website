@@ -16,6 +16,7 @@ document.addEventListener('DOMContentLoaded', () => {
   initFAQ();
   initConsultationForm();
   initStudentAuth();
+  initLanguageSwitcher();
 });
 
 /* ===================================================================
@@ -2013,4 +2014,317 @@ function showToast(message) {
   setTimeout(() => {
     toast.style.display = 'none';
   }, 3400);
+}
+
+/* ===================================================================
+   13. LANGUAGE SWITCHER — Japanese / English / Nepali
+   Strategy: data-i18n attributes on elements + JS replaces textContent
+   Falls back gracefully when elements are missing.
+   =================================================================== */
+
+const I18N = {
+  en: {
+    /* Nav */
+    'nav.topics':       '📚 Topics / Subjects',
+    'nav.videos':       'Videos',
+    'nav.gallery':      '🖼️ Gallery',
+    'nav.ssw':          'SSW Japan',
+    'nav.flashcards':   'Flashcards',
+    'nav.quiz':         'Mock Quiz',
+    'nav.courses':      'Courses',
+    'nav.about':        'About Sensei',
+    'nav.signin':       'Sign In / Join',
+    'nav.subscribe':    'Subscribe',
+    /* Announcement */
+    'ann.text':         '🌸 Watch our latest lessons on YouTube: JLPT N5/N4 & JFT-Basic Mastery',
+    'ann.cta':          'Subscribe Now →',
+    /* Hero */
+    'hero.badge':       'Official Learning Portal • 日本語教育 & 特定技能',
+    'hero.title':       'Master Japanese & Build Your Future in Japan with Kapil Sensei',
+    'hero.desc':        'Your complete pathway to Japan! Free structured YouTube lectures, JFT-Basic (A2) & JLPT N5–N3 exam masterclasses, and specialized SSW guidance for Caregiving, Agriculture, Food Service & Hospitality.',
+    'hero.cta.watch':   'Watch Intro Class',
+    'hero.cta.ssw':     'SSW Visa Sectors',
+    'hero.cta.consult': 'Free Consultation',
+    /* Stats */
+    'stat.exam':        'JFT & JLPT',
+    'stat.exam.sub':    'N5, N4 & A2 Prep',
+    'stat.ssw':         '4 SSW Sectors',
+    'stat.ssw.sub':     'Kaigo, Agri, Food, Hotel',
+    'stat.audio':       'Free Audio',
+    'stat.audio.sub':   'Pronunciation & Kanji Lab',
+    'stat.connect':     'Nepal & Japan',
+    'stat.connect.sub': 'Direct Career Guidance',
+    /* Gallery */
+    'gallery.eyebrow':  '🌸 WHY STUDY JAPANESE?',
+    'gallery.title':    'Your Dream Life in Japan Starts Here',
+    'gallery.subtitle': 'From Nepali classrooms to Japanese workplaces — see how students like you are transforming their lives with Kapil Sensei\'s proven teaching approach.',
+    /* SSW Section */
+    'ssw.eyebrow':      'CAREER PATHWAY IN JAPAN',
+    'ssw.title':        'SSW Visa Preparation Hub',
+    'ssw.subtitle':     'The Specified Skilled Worker (SSW 1 & 2) status allows foreign nationals to work in high-demand Japanese industries with full Japanese labor benefits and fair wages.',
+    'ssw.roadmap.heading': 'Your 5-Step Roadmap to Japan with Kapil Sensei',
+    /* Flashcard Section */
+    'fc.eyebrow':       'INTERACTIVE STUDY LAB',
+    'fc.title':         'Interactive Flashcards with Native Japanese Audio',
+    'fc.subtitle':      'Click the card to flip between Japanese and English. Press the audio button to hear native Japanese pronunciation!',
+    /* FAQ */
+    'faq.eyebrow':      'FREQUENTLY ASKED QUESTIONS',
+    'faq.title':        'Got Questions? Kapil Sensei Has Answers.',
+    /* About */
+    'about.eyebrow':    'MEET YOUR INSTRUCTOR',
+    'about.title':      'About Kapil Sensei',
+    /* Footer */
+    'footer.tagline':   'Your gateway to Japan — JLPT, JFT-Basic, and SSW career guidance from Nepal.',
+    /* Toast */
+    'toast.lang':       '🇬🇧 Switched to English'
+  },
+
+  ja: {
+    /* Nav */
+    'nav.topics':       '📚 トピック / 科目',
+    'nav.videos':       '動画',
+    'nav.gallery':      '🖼️ ギャラリー',
+    'nav.ssw':          'SSW日本',
+    'nav.flashcards':   '単語カード',
+    'nav.quiz':         '模擬試験',
+    'nav.courses':      'コース',
+    'nav.about':        '先生について',
+    'nav.signin':       'ログイン / 登録',
+    'nav.subscribe':    '登録する',
+    /* Announcement */
+    'ann.text':         '🌸 最新レッスンをYouTubeで公開中：JLPT N5/N4 & JFT-Basic マスタークラス',
+    'ann.cta':          '今すぐ登録 →',
+    /* Hero */
+    'hero.badge':       '公式学習ポータル • 日本語教育 & 特定技能',
+    'hero.title':       'カピル先生と一緒に日本語をマスターして、日本での未来を築こう！',
+    'hero.desc':        '日本への完全な道筋！無料のYouTube動画講義、JFT-Basic (A2) & JLPT N5–N3 試験マスタークラス、介護・農業・外食・宿泊のSSW（特定技能）専門ガイダンスをご提供します。',
+    'hero.cta.watch':   '入門動画を見る',
+    'hero.cta.ssw':     'SSWビザ分野',
+    'hero.cta.consult': '無料相談',
+    /* Stats */
+    'stat.exam':        'JFT & JLPT',
+    'stat.exam.sub':    'N5、N4 & A2 対策',
+    'stat.ssw':         '特定技能4分野',
+    'stat.ssw.sub':     '介護・農業・外食・宿泊',
+    'stat.audio':       '無料音声',
+    'stat.audio.sub':   '発音 & 漢字ラボ',
+    'stat.connect':     'ネパール & 日本',
+    'stat.connect.sub': '直接キャリア相談',
+    /* Gallery */
+    'gallery.eyebrow':  '🌸 なぜ日本語を学ぶの？',
+    'gallery.title':    '日本でのあなたの夢の生活はここから始まる',
+    'gallery.subtitle': 'ネパールの教室から日本の職場へ — カピル先生の実証済み指導法で人生を変えた学生たちをご覧ください。',
+    /* SSW Section */
+    'ssw.eyebrow':      '日本でのキャリアパス',
+    'ssw.title':        'SSWビザ準備ハブ（特定技能）',
+    'ssw.subtitle':     '特定技能1号・2号ビザにより、外国人が日本の需要の高い産業で、日本の労働基準・公正な賃金のもとで就労できます。',
+    'ssw.roadmap.heading': 'カピル先生と歩む日本への5ステップロードマップ',
+    /* Flashcard Section */
+    'fc.eyebrow':       'インタラクティブ学習ラボ',
+    'fc.title':         'ネイティブ音声付きインタラクティブ単語カード',
+    'fc.subtitle':      'カードをクリックして日本語と英語を切り替えましょう。音声ボタンでネイティブ発音を聞いてください！',
+    /* FAQ */
+    'faq.eyebrow':      'よくある質問',
+    'faq.title':        '疑問がありますか？カピル先生が答えます。',
+    /* About */
+    'about.eyebrow':    '講師紹介',
+    'about.title':      'カピル先生について',
+    /* Footer */
+    'footer.tagline':   '日本への入り口 — ネパールからのJLPT・JFT-Basic・SSWキャリアガイダンス。',
+    /* Toast */
+    'toast.lang':       '🇯🇵 日本語に切り替えました'
+  },
+
+  ne: {
+    /* Nav */
+    'nav.topics':       '📚 विषयहरू',
+    'nav.videos':       'भिडियो',
+    'nav.gallery':      '🖼️ ग्यालरी',
+    'nav.ssw':          'SSW जापान',
+    'nav.flashcards':   'फ्ल्यासकार्ड',
+    'nav.quiz':         'मोक क्विज',
+    'nav.courses':      'कोर्सहरू',
+    'nav.about':        'सेन्सेइबारे',
+    'nav.signin':       'साइन इन / जोइन',
+    'nav.subscribe':    'सब्सक्राइब',
+    /* Announcement */
+    'ann.text':         '🌸 YouTube मा नयाँ पाठहरू हेर्नुहोस्: JLPT N5/N4 & JFT-Basic मास्टरी',
+    'ann.cta':          'अहिले सब्सक्राइब गर्नुहोस् →',
+    /* Hero */
+    'hero.badge':       'आधिकारिक सिकाइ पोर्टल • जापानी भाषाशिक्षा & विशेष दक्षता',
+    'hero.title':       'कपिल सेन्सेइसँग जापानी सिक्नुहोस् र जापानमा आफ्नो भविष्य बनाउनुहोस्!',
+    'hero.desc':        'जापानको पूर्ण मार्ग! नि:शुल्क YouTube व्याख्यान, JFT-Basic (A2) & JLPT N5–N3 परीक्षा मास्टरक्लास, र Kaigo, कृषि, खाद्य सेवा & आतिथ्यका लागि SSW मार्गदर्शन।',
+    'hero.cta.watch':   'परिचय कक्षा हेर्नुहोस्',
+    'hero.cta.ssw':     'SSW भिसा क्षेत्रहरू',
+    'hero.cta.consult': 'नि:शुल्क परामर्श',
+    /* Stats */
+    'stat.exam':        'JFT & JLPT',
+    'stat.exam.sub':    'N5, N4 & A2 तयारी',
+    'stat.ssw':         '४ SSW क्षेत्र',
+    'stat.ssw.sub':     'Kaigo, कृषि, खाना, होटल',
+    'stat.audio':       'नि:शुल्क अडियो',
+    'stat.audio.sub':   'उच्चारण & कान्जी ल्याब',
+    'stat.connect':     'नेपाल & जापान',
+    'stat.connect.sub': 'प्रत्यक्ष करियर मार्गदर्शन',
+    /* Gallery */
+    'gallery.eyebrow':  '🌸 जापानी किन सिक्ने?',
+    'gallery.title':    'जापानमा तपाईंको सपनाको जीवन यहाँबाट सुरु हुन्छ',
+    'gallery.subtitle': 'नेपाली कक्षाकोठाबाट जापानी कार्यस्थलसम्म — कपिल सेन्सेइको शिक्षण विधिले जीवन बदल्दै गरेका विद्यार्थीहरू हेर्नुहोस्।',
+    /* SSW Section */
+    'ssw.eyebrow':      'जापानमा करियर मार्ग',
+    'ssw.title':        'SSW भिसा तयारी हब (विशेष दक्षता)',
+    'ssw.subtitle':     'SSW १ र २ अन्तर्गत विदेशी नागरिकले जापानको उच्च माग भएका उद्योगहरूमा उचित पारिश्रमिकमा काम गर्न पाउँछन्।',
+    'ssw.roadmap.heading': 'कपिल सेन्सेइसँग जापानको ५-चरण रोडम्याप',
+    /* Flashcard Section */
+    'fc.eyebrow':       'अन्तरक्रियात्मक अध्ययन ल्याब',
+    'fc.title':         'नेटिभ जापानी अडियोसहित अन्तरक्रियात्मक फ्ल्यासकार्ड',
+    'fc.subtitle':      'जापानी र अङ्ग्रेजी बीच फ्लिप गर्न कार्डमा क्लिक गर्नुहोस्। नेटिभ उच्चारण सुन्न अडियो बटन थिच्नुहोस्!',
+    /* FAQ */
+    'faq.eyebrow':      'प्रायः सोधिने प्रश्नहरू',
+    'faq.title':        'प्रश्न छ? कपिल सेन्सेइसँग जवाफ छ।',
+    /* About */
+    'about.eyebrow':    'तपाईंको शिक्षकसँग भेट्नुहोस्',
+    'about.title':      'कपिल सेन्सेइबारे',
+    /* Footer */
+    'footer.tagline':   'जापानको प्रवेशद्वार — नेपालबाट JLPT, JFT-Basic र SSW करियर मार्गदर्शन।',
+    /* Toast */
+    'toast.lang':       '🇳🇵 नेपालीमा परिवर्तन भयो'
+  }
+};
+
+// Map i18n key → querySelector for the element
+const I18N_SELECTORS = [
+  // Nav links (text inside <a> and <button>)
+  { key: 'nav.topics',       sel: '#nav-dropdown-trigger .dropdown-btn-text' },
+  { key: 'nav.videos',       sel: 'a.nav-link[href="#featured-video"]', textOnly: true },
+  { key: 'nav.flashcards',   sel: 'a.nav-link[href="#practice-lab"]', textOnly: true },
+  { key: 'nav.quiz',         sel: 'a.nav-link[href="#quiz-hub"]', textOnly: true },
+  { key: 'nav.courses',      sel: 'a.nav-link[href="#courses"]', textOnly: true },
+  { key: 'nav.about',        sel: 'a.nav-link[href="#about"]', textOnly: true },
+  { key: 'nav.signin',       sel: '#auth-open-btn .auth-btn-label' },
+  { key: 'nav.subscribe',    sel: '.nav-youtube-btn .btn-youtube-text' },
+  // Hero
+  { key: 'hero.title',       sel: '.hero-title', textOnly: true },
+  { key: 'hero.desc',        sel: '.hero-description' },
+  { key: 'hero.cta.watch',   sel: '#open-intro-video-btn span:last-child' },
+  { key: 'hero.cta.consult', sel: '.hero-cta-group .btn-secondary span' },
+  // Hero stats
+  { key: 'stat.exam',        sel: '.hero-stats-grid .stat-card:nth-child(1) .stat-number' },
+  { key: 'stat.exam.sub',    sel: '.hero-stats-grid .stat-card:nth-child(1) .stat-label' },
+  { key: 'stat.ssw',         sel: '.hero-stats-grid .stat-card:nth-child(2) .stat-number' },
+  { key: 'stat.ssw.sub',     sel: '.hero-stats-grid .stat-card:nth-child(2) .stat-label' },
+  { key: 'stat.audio',       sel: '.hero-stats-grid .stat-card:nth-child(3) .stat-number' },
+  { key: 'stat.audio.sub',   sel: '.hero-stats-grid .stat-card:nth-child(3) .stat-label' },
+  { key: 'stat.connect',     sel: '.hero-stats-grid .stat-card:nth-child(4) .stat-number' },
+  { key: 'stat.connect.sub', sel: '.hero-stats-grid .stat-card:nth-child(4) .stat-label' },
+  // Gallery section
+  { key: 'gallery.eyebrow',  sel: '.gallery-section .section-eyebrow' },
+  { key: 'gallery.subtitle', sel: '.gallery-section .section-subtitle' },
+  // SSW section
+  { key: 'ssw.eyebrow',      sel: '.ssw-section .section-eyebrow' },
+  { key: 'ssw.subtitle',     sel: '.ssw-section .section-subtitle' },
+  { key: 'ssw.roadmap.heading', sel: '.roadmap-heading' },
+  // Flashcard section
+  { key: 'fc.eyebrow',       sel: '.practice-section .section-eyebrow' },
+  { key: 'fc.subtitle',      sel: '.practice-section .section-subtitle' },
+];
+
+let currentLang = 'en';
+
+function applyLanguage(lang) {
+  const strings = I18N[lang];
+  if (!strings) return;
+
+  I18N_SELECTORS.forEach(({ key, sel, textOnly }) => {
+    const el = document.querySelector(sel);
+    if (!el || !strings[key]) return;
+    if (textOnly) {
+      // Only update direct text nodes, preserving child elements (ruby, etc.)
+      const firstTextNode = Array.from(el.childNodes).find(n => n.nodeType === Node.TEXT_NODE);
+      if (firstTextNode) {
+        firstTextNode.textContent = strings[key] + ' ';
+      } else {
+        el.textContent = strings[key];
+      }
+    } else {
+      el.textContent = strings[key];
+    }
+  });
+
+  // Gallery section title — use innerHTML to preserve <span class="gradient-text">  
+  const galleryTitle = document.querySelector('.gallery-section .section-title');
+  const sswTitle     = document.querySelector('.ssw-section .section-title');
+  const fcTitle      = document.querySelector('.practice-section .section-title');
+
+  const galleryTitles = {
+    en: 'Your <span class="gradient-text">Dream Life in Japan</span> Starts Here',
+    ja: '<span class="gradient-text">日本での夢の生活</span>はここから始まる',
+    ne: 'जापानमा तपाईंको <span class="gradient-text">सपनाको जीवन</span> यहाँबाट सुरु हुन्छ'
+  };
+  const sswTitles = {
+    en: 'SSW Visa Preparation Hub <span class="kanji-badge"><ruby>特定技能<rt>とくていぎのう</rt></ruby></span>',
+    ja: 'SSWビザ準備ハブ <span class="kanji-badge"><ruby>特定技能<rt>とくていぎのう</rt></ruby></span>',
+    ne: 'SSW भिसा तयारी हब <span class="kanji-badge"><ruby>特定技能<rt>とくていぎのう</rt></ruby></span>'
+  };
+  const fcTitles = {
+    en: 'Interactive Flashcards with <span class="gradient-text">Native Japanese Audio</span>',
+    ja: '<span class="gradient-text">ネイティブ日本語音声</span>付きインタラクティブ単語カード',
+    ne: '<span class="gradient-text">नेटिभ जापानी अडियो</span>सहित अन्तरक्रियात्मक फ्ल्यासकार्ड'
+  };
+
+  if (galleryTitle && galleryTitles[lang]) galleryTitle.innerHTML = galleryTitles[lang];
+  if (sswTitle     && sswTitles[lang])     sswTitle.innerHTML     = sswTitles[lang];
+  if (fcTitle      && fcTitles[lang])      fcTitle.innerHTML      = fcTitles[lang];
+
+  // Hero title (has no child elements, safe to set directly)
+  const heroTitle = document.querySelector('.hero-title');
+  const heroTitles = {
+    en: 'Master Japanese & Build Your Future in Japan with <span class="gradient-text">Kapil Sensei</span>',
+    ja: 'カピル<span class="gradient-text">先生</span>と一緒に日本語をマスターして、日本での未来を築こう！',
+    ne: 'कपिल <span class="gradient-text">सेन्सेइ</span>सँग जापानी सिक्नुहोस् र जापानमा आफ्नो भविष्य बनाउनुहोस्!'
+  };
+  if (heroTitle && heroTitles[lang]) heroTitle.innerHTML = heroTitles[lang];
+
+  // Update <html lang> attribute
+  const langMap = { en: 'en', ja: 'ja', ne: 'ne' };
+  document.documentElement.lang = langMap[lang] || 'en';
+
+  // Persist preference
+  localStorage.setItem('kapil_sensei_lang', lang);
+  currentLang = lang;
+}
+
+function initLanguageSwitcher() {
+  const buttons = document.querySelectorAll('.lang-btn');
+  if (!buttons.length) return;
+
+  // Restore saved language
+  const saved = localStorage.getItem('kapil_sensei_lang') || 'en';
+  currentLang = saved;
+
+  // Set correct active button state without showing toast on load
+  buttons.forEach(btn => {
+    const isActive = btn.dataset.lang === saved;
+    btn.classList.toggle('active', isActive);
+    btn.setAttribute('aria-pressed', isActive ? 'true' : 'false');
+  });
+  applyLanguage(saved);
+
+  // Click handlers
+  buttons.forEach(btn => {
+    btn.addEventListener('click', () => {
+      const lang = btn.dataset.lang;
+      if (lang === currentLang) return;
+
+      // Update active state
+      buttons.forEach(b => {
+        const active = b.dataset.lang === lang;
+        b.classList.toggle('active', active);
+        b.setAttribute('aria-pressed', active ? 'true' : 'false');
+      });
+
+      applyLanguage(lang);
+      showToast(I18N[lang]?.['toast.lang'] || `Language: ${lang.toUpperCase()}`);
+    });
+  });
 }
